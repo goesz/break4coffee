@@ -27,3 +27,5 @@ export async function routes(fastify: FastifyInstance, options: FastifyPluginOpt
         return new DeleteCustomerController().handle(request, reply)
     })
 }
+
+// まっすぐ自分の言葉は曲げねぇ...オレの忍道だ!
