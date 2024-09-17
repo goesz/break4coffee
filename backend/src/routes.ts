@@ -11,7 +11,7 @@ export async function routes(fastify: FastifyInstance, options: FastifyPluginOpt
     fastify.get("/teste", async (request: FastifyRequest, reply: FastifyReply) => {
         return { ok: true }
     })
-    fastify.post("/customer", async (request: FastifyRequest, reply: FastifyReply) =>{
+    fastify.post("/cliente", async (request: FastifyRequest, reply: FastifyReply) =>{
         return new CreateCustomerController().handle(request, reply)
     })
     fastify.post("/pedido", async (request: FastifyRequest, reply: FastifyReply) =>{
@@ -20,10 +20,12 @@ export async function routes(fastify: FastifyInstance, options: FastifyPluginOpt
     fastify.get("/pedidos", async (request: FastifyRequest, reply: FastifyReply) =>{
         return new ListOrdersController().handle(request, reply)
     })
-    fastify.get("/customers", async (request: FastifyRequest, reply: FastifyReply) =>{
+    fastify.get("/clientes", async (request: FastifyRequest, reply: FastifyReply) =>{
         return new ListCustomersController().handle(request, reply)
     })
-    fastify.delete("/customer", async (request: FastifyRequest, reply: FastifyReply) =>{
+    fastify.delete("/cliente", async (request: FastifyRequest, reply: FastifyReply) =>{
         return new DeleteCustomerController().handle(request, reply)
     })
 }
+
+// まっすぐ自分の言葉は曲げねぇ...オレの忍道だ!
