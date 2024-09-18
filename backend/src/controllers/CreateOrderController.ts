@@ -3,12 +3,13 @@ import { CreateOrderService } from '../services/CreateOrderService';
 
 class CreateOrderController {
     async handle(request: FastifyRequest, reply: FastifyReply) {
-        const { customer_id, descricao, valor, loja, status } = request.body as { 
+        const { customer_id, descricao, valor, loja, status, id_produto } = request.body as { 
             customer_id: string; 
             descricao: string; 
             valor: number; 
             loja: string; 
             status: boolean; 
+            id_produto: string;
         };
 
         const createOrderService = new CreateOrderService();
@@ -19,6 +20,7 @@ class CreateOrderController {
             valor,
             loja,
             status,
+            id_produto
         });
 
         reply.send(pedido);

@@ -29,9 +29,10 @@ model Customer {
 
 
 model Produto {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  id          String  @id @map("_id") @db.String
   nome        String
-  tipo        String
+  tipo        String @default("café")
+  valor         Float
   descricao   String
   created_at  DateTime? @default(now())
   updated_at  DateTime? @default(now())
