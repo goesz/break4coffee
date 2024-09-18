@@ -1,6 +1,7 @@
 import prismaClient from "../prisma";
 
 interface CreateOrderProps {
+    id_produto: string,
     loja: string;
     descricao: string;
     valor: number;
@@ -11,13 +12,14 @@ interface CreateOrderProps {
 
 //   customer_id     descricao      valor          loja         status 
 class CreateOrderService {
-    async execute({ loja, descricao, valor, status, customer_id }: CreateOrderProps){
+    async execute({ id_produto, loja, descricao, valor, status, customer_id }: CreateOrderProps){
 
     if(!valor || !descricao){
         throw new Error("Preencha todos os campos")
     }
     const pedido = await prismaClient.pedido.create({
         data:{
+            id_produto,
             valor,
             loja,
             descricao,

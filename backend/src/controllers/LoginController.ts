@@ -1,18 +1,18 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { CreateCustomerService } from '../services/CreateCustomerService'
+import { LoginService } from '../services/LoginService'
 
 class CreateCustomerController {
     async handle(request: FastifyRequest, reply: FastifyReply){
-    const { name, email, password } = request.body as {name: string, email: string, password: string};
+    const { email, password } = request.body as {email: string, password: string};
     try {
-        const customerService = new CreateCustomerService();
-        const customer = await customerService.execute({ name, email, password });
-        reply.status(201).send(customer);
+        const Login = new LoginService();
+        const userLogin = await Login.execute({ email, password });
+        reply.status(201).send(userLogin);
         return;
     } catch (error) {
         if (error instanceof Error) {
-            if (error.message === 'E-mail já utilizado') {
-                reply.status(422).send({ msg: 'E-mail já utilizado' });
+            if (error.message === 'Senha incorreta') {
+                reply.status(422).send({ msg: 'Senha incorreta' });
                 return;
             }
 

@@ -28,7 +28,7 @@ class CreateCustomerService {
             status: true
         }
     })
-    console.log("Rota chamada")
+    console.log("Rota de criar usuário chamada")
 
         return customer
     }
