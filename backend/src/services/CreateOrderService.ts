@@ -12,7 +12,7 @@ interface CreateOrderProps {
 
 //   customer_id     descricao      valor          loja         status 
 class CreateOrderService {
-    async execute({ id_produto, loja, descricao, valor, status, customer_id }: CreateOrderProps){
+    async execute({ id_produto, loja, descricao, valor, customer_id }: CreateOrderProps){
 
     if(!valor || !descricao){
         throw new Error("Preencha todos os campos")
