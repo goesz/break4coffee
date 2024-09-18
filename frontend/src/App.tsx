@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef, FormEvent } from 'react';
 import { FiTrash } from 'react-icons/fi';
-import { api } from './services/api'
+import { api } from './services/api';
+import axios from 'axios';
 
 interface CustomerProps{
   id: string;
@@ -8,6 +9,7 @@ interface CustomerProps{
   email: string;
   status: boolean;
   created_at: string;
+  password: string;
 }
 
 export default function App(){
@@ -15,31 +17,52 @@ export default function App(){
   const [customers, setCustomers] =useState<CustomerProps[]>([])
   const nameRef = useRef<HTMLInputElement | null>(null)
   const emailRef = useRef<HTMLInputElement | null>(null)
+  const passwordRef = useRef<HTMLInputElement | null>(null)
   useEffect(() => {
     loadCustomers();
   }, [])
 
   async function loadCustomers(){
-    const response = await api.get("/customers")
+    const response = await api.get("/clientes")
     setCustomers(response.data);
   }
 
-  async function handleSubmit(event: FormEvent){
-      event.preventDefault();
-    if(!nameRef.current?.value || !emailRef.current?.value) return;
-      console.log(nameRef.current?.value);
-      console.log(emailRef.current?.value);
+  async function handleSubmit(event: FormEvent) {
+    event.preventDefault();
 
-      const response = await api.post("/customer",{
-        name: nameRef.current?.value,
-        email: emailRef.current?.value
-      })
+    if (!nameRef.current?.value || !emailRef.current?.value || !passwordRef.current?.value) return;
 
-      setCustomers(allCustomers => [...allCustomers, response.data]);
+    try {
+        const response = await api.post("/auth/register", {
+            name: nameRef.current.value,
+            email: emailRef.current.value,
+            password: passwordRef.current.value
+        });
+        console.log(response)
 
-      nameRef.current.value = "";
-      emailRef.current.value = "";
-  }
+        alert("Cadastro realizado com sucesso!");
+        setCustomers(allCustomers => [...allCustomers, response.data]);
+
+        nameRef.current.value = "";
+        emailRef.current.value = "";
+        passwordRef.current.value = "";
+
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+            if (error.response) {
+                alert(`Erro: ${error.response.data.msg || 'Ocorreu um erro inesperado'}`);
+                return;
+            }
+
+            alert('Sem resposta do servidor');
+            return;
+        }
+
+        alert('Ocorreu um erro inesperado');
+        return;
+    }
+}
+
 
 
   async function handleDelete(id: string){
@@ -75,6 +98,11 @@ export default function App(){
              placeholder="Digite seu e-mail.."
              className ="w-full mb-5 p-2 rounded-lg"
              ref={emailRef} />
+             <label className="font-medium text-white">Senha:</label>
+             <input type="password"
+             placeholder="Digite sua senha"
+             className ="w-full mb-5 p-2 rounded-lg"
+             ref={passwordRef} />
              <input type="submit" value="Cadastrar"
               className ="cursor-pointer w-full p-2 bg-green-500 rounded-lg font-medium"/>
           </form>
@@ -85,7 +113,7 @@ export default function App(){
                         <article 
                         key={customer.id}
                         className = "w-full bg-white rounded p-2 relative hover:scale-105 duration-200">
-                        <p><span className ="font-medium">Pedido:</span> {customer.name}</p>
+                        <p><span className ="font-medium">Senha:</span> {customer.password}</p>
                         <p><span className ="font-medium">Nome:</span> {customer.name}</p>
                         <p><span className ="font-medium">Email:</span> {customer.email}</p>
                         <p><span className ="font-medium">Status:</span> {customer.status? "Ativo": "Inativo"}</p>

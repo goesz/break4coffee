@@ -3,7 +3,8 @@ import { CreateCustomerController } from "./controllers/CreateCustomerController
 import { ListCustomersController } from "./controllers/ListCustomersController";
 import { DeleteCustomerController } from "./controllers/DeleteCustomerController";
 import { CreateOrderController } from "./controllers/CreateOrderController";
-import { ListOrdersController } from "./controllers/ListOrdersController"
+import { ListOrdersController } from "./controllers/ListOrdersController";
+import { LoginController } from "./controllers/LoginController";
 
 
 export async function routes(fastify: FastifyInstance, options: FastifyPluginOptions){
@@ -11,8 +12,11 @@ export async function routes(fastify: FastifyInstance, options: FastifyPluginOpt
     fastify.get("/teste", async (request: FastifyRequest, reply: FastifyReply) => {
         return { ok: true }
     })
-    fastify.post("/cliente", async (request: FastifyRequest, reply: FastifyReply) =>{
+    fastify.post("/auth/register", async (request: FastifyRequest, reply: FastifyReply) =>{
         return new CreateCustomerController().handle(request, reply)
+    })
+    fastify.post("/auth/login", async (request: FastifyRequest, reply: FastifyReply) =>{
+        return new LoginController().handle(request, reply)
     })
     fastify.post("/pedido", async (request: FastifyRequest, reply: FastifyReply) =>{
         return new CreateOrderController().handle(request, reply)
