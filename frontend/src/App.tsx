@@ -2,16 +2,7 @@ import { useEffect, useState, useRef, FormEvent } from 'react';
 import { FiTrash } from 'react-icons/fi';
 import { api } from './services/api';
 import axios from 'axios';
-
-interface ProductProps {
-  id: string;
-  nome: string;
-  tipo: string;
-  valor: number;
-  descricao: string;
-  created_at: string;
-  updated_at: string;
-}
+import Footer from './routes/footer';
 
 interface CustomerProps {
   id: string;
@@ -22,46 +13,7 @@ interface CustomerProps {
   password: string;
 }
 
-function ProductCard() {
-  const [products, setProducts] = useState<ProductProps[]>([]);
 
-  useEffect(() => {
-    async function loadProducts() {
-      try {
-        const response = await api.get('/produtos');
-        setProducts(response.data);
-      } catch (error) {
-        console.error('Error loading products:', error);
-      }
-    }
-
-    loadProducts();
-  }, []);
-
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
-      {products.map((product) => (
-        <div 
-          key={product.id}
-          className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-300 hover:scale-105"
-        >
-          <img
-            src={`/images/${product.id}.png`}
-            alt={product.nome}
-            className="w-full h-48 object-cover"
-          />
-          <div className="p-4">
-            <h2 className="text-xl font-semibold mb-2">{product.nome}</h2>
-            <p className="text-gray-700 mb-2"><span className="font-medium">Tipo:</span> {product.tipo}</p>
-            <p className="text-gray-700 mb-2"><span className="font-medium">ID:</span> {product.id}</p>
-            <p className="text-gray-700 mb-2"><span className="font-medium">Descrição:</span> {product.descricao}</p>
-            <p className="text-gray-900 font-bold"><span className="font-medium">Valor:</span> R${product.valor.toFixed(2)}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export default function App() {
   const [customers, setCustomers] = useState<CustomerProps[]>([]);
@@ -136,36 +88,36 @@ export default function App() {
   }
 
   return (
-    <div className="w-full min-h-screen bg-gray-900 flex flex-col items-center px-4">
-      <main className="my-10 w-full md:max-w-2xl">
-        <h1 className="text-4xl font-medium text-white mb-8">Clientes</h1>
+    <div className="w-full h-full min-h-screen bg-gray-300 flex flex-col items-center px-4">
+      <main className="my-10 w-full h-full md:max-w-2xl">
+        <h1 className="text-4xl font-medium text-amber-950 mb-8">Clientes</h1>
         <form className="flex flex-col my-6" onSubmit={handleSubmit}>
-          <label className="font-medium text-white">Nome:</label>
+          <label className="font-medium text-amber-950">Nome:</label>
           <input
             type="text"
             placeholder="Digite seu nome.."
-            className="w-full mb-5 p-2 rounded-lg"
+            className="w-full mb-5 p-2 text-amber-950 rounded-lg"
             ref={nameRef}
           />
 
-          <label className="font-medium text-white">E-mail:</label>
+          <label className="font-medium text-amber-950">E-mail:</label>
           <input
             type="email"
             placeholder="Digite seu e-mail.."
-            className="w-full mb-5 p-2 rounded-lg"
+            className="w-full mb-5 p-2 text-amber-950 rounded-lg"
             ref={emailRef}
           />
-          <label className="font-medium text-white">Senha:</label>
+          <label className="font-medium text-amber-950">Senha:</label>
           <input
             type="password"
             placeholder="Digite sua senha"
-            className="w-full mb-5 p-2 rounded-lg"
+            className="w-full mb-5 p-2 text-amber-950 rounded-lg"
             ref={passwordRef}
           />
           <input
             type="submit"
             value="Cadastrar"
-            className="cursor-pointer w-full p-2 bg-green-500 rounded-lg font-medium"
+            className="cursor-pointer text-white w-full p-2 bg-amber-950 rounded-lg font-medium"
           />
         </form>
 
@@ -189,9 +141,9 @@ export default function App() {
             </article>
           ))}
         </section>
-        <h1 className="text-4xl font-medium text-white mb-8">Nossos produtos</h1>
-        <ProductCard />
       </main>
+      <Footer />
     </div>
+    
   );
 }
