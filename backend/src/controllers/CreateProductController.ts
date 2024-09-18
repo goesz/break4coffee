@@ -1,18 +1,18 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
-import { LoginService } from '../services/LoginService'
+import { CreateProductService } from '../services/CreateProductService'
 
-class LoginController {
+class CreateProductController {
     async handle(request: FastifyRequest, reply: FastifyReply){
-    const { email, password } = request.body as {email: string, password: string};
+    const { id, nome, descricao, valor, tipo } = request.body as { id:string, nome:string, descricao:string, valor:number, tipo: string };
     try {
-        const Login = new LoginService();
-        const userLogin = await Login.execute({ email, password });
-        reply.status(201).send(userLogin);
+        const productService = new CreateProductService();
+        const product = await productService.execute({ id, nome, descricao, valor, tipo });
+        reply.status(201).send(product);
         return;
     } catch (error) {
         if (error instanceof Error) {
-            if (error.message === 'Senha incorreta') {
-                reply.status(422).send({ msg: 'Senha incorreta' });
+            if (error.message === 'E-mail já utilizado') {
+                reply.status(422).send({ msg: 'E-mail já utilizado' });
                 return;
             }
 
@@ -32,4 +32,4 @@ class LoginController {
 }
 }
 
-export { LoginController };
+export { CreateProductController };
