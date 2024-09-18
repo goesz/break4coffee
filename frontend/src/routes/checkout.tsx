@@ -1,9 +1,8 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './navbar';
 import Footer from './footer';
-import { useNavigate } from 'react-router-dom';
-import { Link } from "react-router-dom";
+import { api } from '../services/api';
 
 interface CartItem {
   id: string;
@@ -15,12 +14,32 @@ interface CartItem {
 }
 
 const Checkout = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const { cartItems }: { cartItems: CartItem[] } = location.state || { cartItems: [] };
-  const navigate = useNavigate();
 
   const handleBack = () => {
     navigate('/produtos', { state: {} });
+  };
+
+  const handleFinalize = async () => {
+    try {
+      await Promise.all(cartItems.map(async (item) => {
+        await api.post('/pedido', {
+          customer_id: '66eae3830c764ebff796333e',
+          descricao: item.descricao,
+          valor: item.valor,
+          loja: 'loja-exemplo',
+          id_produto: item.id
+        });
+        console.log(item.valor);
+      }));
+
+      console.log('Pedidos criados com sucesso');
+      navigate('/produtos');
+    } catch (error) {
+      console.error('Erro ao finalizar compra:', error);
+    }
   };
 
   const total = cartItems.reduce((sum, item) => sum + item.valor * item.quantidade, 0);
@@ -50,10 +69,16 @@ const Checkout = () => {
               </div>
             </div>
             <div className="flex gap-4 justify-center">
-              <button className="bg-amber-950 text-white px-6 py-2 rounded-lg font-medium transition-transform duration-500 hover:scale-105">
+              <button
+                className="bg-amber-950 text-white px-6 py-2 rounded-lg font-medium transition-transform duration-500 hover:scale-105"
+                onClick={handleFinalize}
+              >
                 Finalizar Compra
               </button>
-              <button className="bg-amber-950 text-white px-6 py-2 rounded-lg font-medium transition-transform duration-500 hover:scale-105" onClick={handleBack}>
+              <button
+                className="bg-amber-950 text-white px-6 py-2 rounded-lg font-medium transition-transform duration-500 hover:scale-105"
+                onClick={handleBack}
+              >
                 Alterar Itens
               </button>
             </div>

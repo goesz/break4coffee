@@ -50,7 +50,7 @@ model Pedido {
   valor         Float
   loja          String
   status        Boolean
-  id_produto    String   @db.ObjectId
+  id_produto    String   @db.String
   created_at    DateTime? @default(now())
   updated_at    DateTime? @default(now())
 
