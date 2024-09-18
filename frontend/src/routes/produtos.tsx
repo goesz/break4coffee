@@ -21,6 +21,7 @@ interface CartItem extends ProductProps {
 const ProductCard = () => {
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  
 
   useEffect(() => {
     async function loadProducts() {
