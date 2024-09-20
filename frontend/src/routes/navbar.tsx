@@ -21,12 +21,12 @@ export default function Navbar() {
           </div>
           <ul className="flex space-x-4">
             <li>
-              <Link to="/" className="text-amber-950 hover:text-amber-800">
-                Produto
+              <Link to="/produtos" className="text-amber-950 hover:text-amber-800">
+                Produtos
               </Link>
             </li>
             <li>
-              <Link to="/" className="text-amber-950 hover:text-amber-800">
+              <Link to="/contato" className="text-amber-950 hover:text-amber-800">
                 Contato
               </Link>
             </li>

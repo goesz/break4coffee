@@ -15,16 +15,16 @@ export default function Footer() {
           </nav>
 
           <div className="flex space-x-4">
-            <a href="https://facebook.com" className="hover:text-amber-950">
+            <a href="https://facebook.com" className="hover:text-amber-950 hover:scale-105 duration-200">
               <FiFacebook size={24} />
             </a>
-            <a href="https://twitter.com" className="hover:text-amber-950">
+            <a href="https://twitter.com" className="hover:text-amber-950 hover:scale-105 duration-200">
               <FiTwitter size={24} />
             </a>
-            <a href="https://instagram.com" className="hover:text-amber-950">
+            <a href="https://instagram.com" className="hover:text-amber-950 hover:scale-105 duration-200">
               <FiInstagram size={24} />
             </a>
-            <a href="https://linkedin.com" className="hover:text-amber-950">
+            <a href="https://linkedin.com" className="hover:text-amber-950 hover:scale-105 duration-200">
               <FiLinkedin size={24} />
             </a>
           </div>
