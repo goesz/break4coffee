@@ -4,6 +4,7 @@ import { api } from './services/api';
 import axios from 'axios';
 import Footer from './routes/footer';
 import Navbar from './routes/navbar';
+import { useNavigate, Link } from 'react-router-dom';
 
 interface CustomerProps {
   id: string;
@@ -22,6 +23,14 @@ export default function App() {
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const userRole = sessionStorage.getItem('userRole');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = sessionStorage.getItem('token');
+    if (token) {
+        navigate('/produtos');
+    }
+}, [navigate]);
 
   useEffect(() => {
     loadCustomers();
@@ -156,8 +165,8 @@ export default function App() {
           ))}
         </section>
       </main>
-      <Footer />
     </div>
+      <Footer />
           </div>
     
   );
