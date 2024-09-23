@@ -1,4 +1,6 @@
 import prismaClient from "../prisma";
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 interface CustomerProps {
     email: string;
@@ -19,19 +21,21 @@ class LoginService {
         if (!user) {
             throw new Error("Usuário não encontrado")
           }
-    const checkPassword = await prismaClient.customer.findFirst({
-        where:{
-            email: email,
-            password: password
-        }
-    })
+
+
+    const checkPassword = await bcrypt.compare(password, user.password);
     if(!checkPassword){
-        throw new Error("Senha incorreta")
+        throw new Error("E-mail ou senha inválidos.")
     }
 
-
+    const token = jwt.sign({id: user.id }, process.env.JWT_PASS ?? '', { expiresIn: '8h'} )
     console.log("Rota de logar chamada")
-
+    
+    const {password: _, ...userLogin} = user 
+    return {
+            user: userLogin,
+            token: token
+    }
 }
 }
 

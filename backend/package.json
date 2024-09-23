@@ -21,6 +21,7 @@
     "@prisma/client": "^5.18.0",
     "@stenway/reliabletxt": "^1.1.0",
     "@stenway/reliabletxt-io": "^1.1.0",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "fastify": "^4.28.1",
     "tsx": "^4.18.0"
