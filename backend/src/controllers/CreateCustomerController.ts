@@ -3,10 +3,10 @@ import { CreateCustomerService } from '../services/CreateCustomerService'
 
 class CreateCustomerController {
     async handle(request: FastifyRequest, reply: FastifyReply){
-    const { name, email, password } = request.body as {name: string, email: string, password: string};
+    const { name, email, password, role } = request.body as {name: string, email: string, password: string, role: string};
     try {
         const customerService = new CreateCustomerService();
-        const customer = await customerService.execute({ name, email, password });
+        const customer = await customerService.execute({ name, email, password, role });
         reply.status(201).send(customer);
         return;
     } catch (error) {

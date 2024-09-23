@@ -11,8 +11,8 @@ class LoginController {
         return;
     } catch (error) {
         if (error instanceof Error) {
-            if (error.message === 'Senha incorreta') {
-                reply.status(422).send({ msg: 'Senha incorreta' });
+            if (error.message === 'E-mail ou senha inválidos.') {
+                reply.status(422).send({ msg: 'E-mail ou senha inválidos.' });
                 return;
             }
 

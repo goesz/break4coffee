@@ -16,6 +16,7 @@ interface CartItem {
 const Checkout = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const userId = sessionStorage.getItem('userId')
   const { cartItems }: { cartItems: CartItem[] } = location.state || { cartItems: [] };
 
   const handleBack = () => {
@@ -23,11 +24,12 @@ const Checkout = () => {
   };
 
   const handleFinalize = async () => {
+    if (!userId) return navigate('/login');
     try {
       await Promise.all(cartItems.map(async (item) => {
         await api.post('/pedido', {
-          customer_id: '66eae3830c764ebff796333e',
-          descricao: item.descricao,
+          customer_id: userId,
+          descricao: item.nome,
           valor: item.valor,
           loja: 'loja-exemplo',
           id_produto: item.id
@@ -36,7 +38,7 @@ const Checkout = () => {
       }));
 
       console.log('Pedidos criados com sucesso');
-      navigate('/produtos');
+      navigate('/meuspedidos');
     } catch (error) {
       console.error('Erro ao finalizar compra:', error);
     }

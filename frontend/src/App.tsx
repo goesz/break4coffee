@@ -21,6 +21,7 @@ export default function App() {
   const nameRef = useRef<HTMLInputElement | null>(null);
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
+  const userRole = sessionStorage.getItem('userRole');
 
   useEffect(() => {
     loadCustomers();
@@ -134,7 +135,7 @@ export default function App() {
         </form>
 
         <section className="flex flex-col gap-4 mb-10">
-          {customers.map((customer) => (
+          {userRole === 'admin' && customers.map((customer) => (
             <article
             key={customer.id}
             className="w-full bg-white rounded p-4 shadow-md relative hover:scale-105 duration-200"

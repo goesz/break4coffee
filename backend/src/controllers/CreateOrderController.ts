@@ -3,7 +3,7 @@ import { CreateOrderService } from '../services/CreateOrderService';
 
 class CreateOrderController {
     async handle(request: FastifyRequest, reply: FastifyReply) {
-        const { customer_id, descricao, valor, loja, status, id_produto } = request.body as { 
+        const {  customer_id, descricao, valor, loja, status, id_produto } = request.body as { 
             customer_id: string; 
             descricao: string; 
             valor: number; 
@@ -14,16 +14,21 @@ class CreateOrderController {
 
         const createOrderService = new CreateOrderService();
 
-        const pedido = await createOrderService.execute({
-            customer_id: customer_id,
-            descricao,
-            valor,
-            loja,
-            status,
-            id_produto
-        });
+        try {
+            const order = await createOrderService.execute({
+                customer_id,
+                descricao,
+                valor,
+                loja,
+                status,
+                id_produto
+            });
 
-        reply.send(pedido);
+            return reply.status(201).send(order);
+        } catch (error) {
+            console.error(error);
+            return reply.status(500).send({ error: 'Erro ao criar o pedido' });
+        }
     }
 }
 
