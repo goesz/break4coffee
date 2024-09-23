@@ -24,14 +24,18 @@ const Checkout = () => {
   };
 
   const handleFinalize = async () => {
+    const userSaldo = parseFloat(sessionStorage.getItem('userMoney') || '0');
     if (!userId) return navigate('/login');
+    if (userSaldo < total){
+      console.log('você ta pobre')
+      return navigate('/produtos')}
     try {
       await Promise.all(cartItems.map(async (item) => {
         await api.post('/pedido', {
           customer_id: userId,
           descricao: item.nome,
           valor: item.valor,
-          loja: 'loja-exemplo',
+          loja: 'Starbucks',
           id_produto: item.id
         });
         console.log(item.valor);

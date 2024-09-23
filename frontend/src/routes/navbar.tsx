@@ -36,23 +36,27 @@ export default function Navbar() {
         <ul className="flex space-x-4">
           <li>
             <Link to="/produtos" className="text-amber-950 hover:text-amber-800">
-              Produtos
+              <b>
+                Produtos
+                </b>
             </Link>
           </li>
           <li>
             <Link to="/contato" className="text-amber-950 hover:text-amber-800">
+            <b>
               Contato
+            </b>
             </Link>
           </li>
           <li>
             <Link to="/" className="text-amber-950 hover:text-amber-800">
-              Sobre Nós
+             <b> Sobre Nós</b>
             </Link>
           </li>
           {!isLoggedIn ? (
             <input
               type="button"
-              className="cursor-pointer text-center h-7 text-white bg-amber-950 rounded-lg font-medium px-4 py-0"
+              className="cursor-pointer text-center h-6 text-white bg-amber-950 rounded-lg font-medium px-4 py-0 hover:scale-105 duration-500"
               value="Login"
               onClick={handleClick}
             />

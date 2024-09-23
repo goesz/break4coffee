@@ -9,6 +9,7 @@ const Dropdown = () => {
     const handleLogout = () => {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('userId');
+    sessionStorage.clear();
     navigate('/login');
   };
     return (

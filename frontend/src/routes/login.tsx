@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Navbar from './navbar';
 import { api } from '../services/api';
 import Footer from './footer';
@@ -15,6 +15,7 @@ interface LoginResponse {
       created_at: string;
       updated_at: string;
       role: string;
+      saldo: number;
     };
     token: string;
   }
@@ -25,6 +26,13 @@ interface LoginResponse {
     const passwordRef = useRef<HTMLInputElement>(null);
     const [userProfile, setUserProfile] = useState<LoginResponse['user'] | null>(null);
     const [error, setError] = useState<string | null>(null);
+    
+    useEffect(() => {
+      const token = sessionStorage.getItem('token');
+      if (token) {
+          navigate('/produtos');
+      }
+  }, [navigate]);
   
     const handleLoginSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
@@ -46,6 +54,7 @@ interface LoginResponse {
         sessionStorage.setItem('token', token);
         sessionStorage.setItem('userId', user.id);
         sessionStorage.setItem('userRole', user.role);
+        sessionStorage.setItem('userMoney', user.saldo);
         navigate('/produtos')
 
 
