@@ -5,10 +5,11 @@ interface CreateCustomerProps {
     name: string;
     email: string;
     password: string;
+    role: string;
 }
 
 class CreateCustomerService {
-    async execute({ name, email, password }: CreateCustomerProps){
+    async execute({ name, email, password, role }: CreateCustomerProps){
 
     if(!name || !email || !password ||password.length <= 6){
         throw new Error("Preencha todos os campos")
@@ -26,6 +27,7 @@ class CreateCustomerService {
         data:{
             name,
             email,
+            role,
             password: hashPassword,
             status: true
         }

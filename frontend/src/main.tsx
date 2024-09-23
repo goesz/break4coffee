@@ -7,11 +7,21 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Contact from './routes/contact.tsx';
 import Teste from './routes/padrao.tsx';
 import Checkout from './routes/checkout.tsx';
+import Login from './routes/login.tsx';
+import Pedidos from './routes/pedidos.tsx';
 
 const router = createBrowserRouter([
   {
     path: "/contato",
     element: <Contact />
+  },
+  {
+    path: "/meuspedidos",
+    element: < Pedidos />
+  },
+  {
+    path: "/login",
+    element: <Login />
   },
   {
     path: "/checkout",

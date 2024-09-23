@@ -18,6 +18,8 @@ model Customer {
   name             String
   email            String   @unique
   password         String
+  role             String @default("user")
+  saldo            Float @default(50)
   status           Boolean
   created_at       DateTime? @default(now())
   updated_at       DateTime? @default(now())
@@ -33,6 +35,7 @@ model Produto {
   nome        String
   tipo        String @default("café")
   valor         Float
+  loja        String @default("Break")
   descricao   String
   created_at  DateTime? @default(now())
   updated_at  DateTime? @default(now())
@@ -50,7 +53,7 @@ model Pedido {
   valor         Float
   loja          String
   status        Boolean
-  id_produto    String   @db.String
+  id_produto    String
   created_at    DateTime? @default(now())
   updated_at    DateTime? @default(now())
 
