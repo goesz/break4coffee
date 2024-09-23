@@ -1,4 +1,5 @@
 import prismaClient from "../prisma";
+import bcrypt from 'bcrypt';
 
 interface CreateCustomerProps {
     name: string;
@@ -9,10 +10,10 @@ interface CreateCustomerProps {
 class CreateCustomerService {
     async execute({ name, email, password }: CreateCustomerProps){
 
-    if(!name || !email || !password){
+    if(!name || !email || !password ||password.length <= 6){
         throw new Error("Preencha todos os campos")
     }
-    const userExists = await prismaClient.customer.findFirst({ 
+    const userExists = await prismaClient.customer.findUnique({ 
         where:{
             email: email 
         }})
@@ -20,11 +21,12 @@ class CreateCustomerService {
         if (userExists) {
             throw new Error("E-mail já utilizado")
           }
+    const hashPassword = await bcrypt.hash(password, 10)
     const customer = await prismaClient.customer.create({
         data:{
             name,
             email,
-            password,
+            password: hashPassword,
             status: true
         }
     })

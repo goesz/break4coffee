@@ -140,6 +140,7 @@ export default function App() {
             className="w-full bg-white rounded p-4 shadow-md relative hover:scale-105 duration-200"
             >
               <p><span className="font-medium">Senha:</span> {customer.password}</p>
+              <p><span className="font-medium">Id:</span> {customer.id}</p>
               <p><span className="font-medium">Nome:</span> {customer.name}</p>
               <p><span className="font-medium">Email:</span> {customer.email}</p>
               <p><span className="font-medium">Status:</span> {customer.status ? 'Ativo' : 'Inativo'}</p>
