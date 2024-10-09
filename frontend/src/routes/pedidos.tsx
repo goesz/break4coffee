@@ -54,11 +54,10 @@ const Pedidos = () => {
     }, [navigate]);
 
     return (
-        <div>
+        <div className="bg-gray-300">
             <Navbar />
             <div className="w-full h-full min-h-screen bg-gray-300 flex flex-col items-center px-4 relative">
                 <main className="my-10 w-full h-full md:max-w-2xl z-10">
-                    <h1 className="text-4xl font-medium text-amber-950 mb-8">Meus Pedidos</h1>
 
                     {error && <p className="text-red-500 mb-4">{error}</p>}
 
@@ -66,6 +65,8 @@ const Pedidos = () => {
                         <p className="text-gray-700">Você não tem pedidos.</p>
                     ) : (
                         <ul className="list-disc pl-5">
+                                                <h1 className="text-amber-800 font-semibold text-center text-5xl">Seus Pedidos:</h1>
+                                                <h1 className="text-gray-500 font-style: italic font-semibold text-center text-1xl opacity-20">Muito obrigado pela confiança em nosso trabalho!</h1> <br></br> <br></br>
                             {pedidos.map(pedido => (
                                 <li key={pedido.id} className="mb-4 relative bg-white shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-105">
                                     <div className="relative h-32">
