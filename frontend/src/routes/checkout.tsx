@@ -24,7 +24,7 @@ const Checkout = () => {
   };
 
   const handleFinalize = async () => {
-    const userSaldo = parseFloat(sessionStorage.getItem('userMoney') || '0');
+    var userSaldo = parseFloat(sessionStorage.getItem('userMoney') || '0');
     if (!userId) return navigate('/login');
     if (userSaldo < total){
       console.log('você ta pobre')
@@ -42,9 +42,12 @@ const Checkout = () => {
       }));
 
       console.log('Pedidos criados com sucesso');
+      alert('Pedido realizado com sucesso');
       navigate('/meuspedidos');
+      var userSaldo = total - userSaldo;
     } catch (error) {
       console.error('Erro ao finalizar compra:', error);
+      alert('Erro ao finalizar compra, saldo insuficiente.')
     }
   };
 

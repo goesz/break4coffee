@@ -26,7 +26,7 @@ interface LoginResponse {
     const passwordRef = useRef<HTMLInputElement>(null);
     const [userProfile, setUserProfile] = useState<LoginResponse['user'] | null>(null);
     const [error, setError] = useState<string | null>(null);
-    
+
     useEffect(() => {
       const token = sessionStorage.getItem('token');
       if (token) {
@@ -34,6 +34,7 @@ interface LoginResponse {
       }
   }, [navigate]);
   
+    const handleSignUp = async (event: React.MouseEvent<HTMLButtonElement>) => {navigate('/');}
     const handleLoginSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
       const email = emailRef.current?.value;
@@ -102,13 +103,14 @@ interface LoginResponse {
               ref={passwordRef}
               required
             />
-
             <input
               type="submit"
               value="Entrar"
               className="cursor-pointer text-white w-full p-2 bg-amber-950 rounded-lg font-medium hover:scale-105 duration-200"
-            />
+              />
           </form>
+                        <button onClick={handleSignUp}
+              className="cursor-pointer text-white w-full p-2 bg-amber-950 rounded-lg font-medium hover:scale-105 duration-200 left-52">Cadastrar</button>
 
           {userProfile && (
             <div className="mt-10 p-4 bg-white rounded-lg shadow-md">
