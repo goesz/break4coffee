@@ -54,8 +54,6 @@ const Home = () => {
   return (
 <main className="bg-gray-300 flex flex-col min-h-screen">
   <Navbar />
-
-  {/* Hero Section */}
   <div className="bg-cover bg-center h-64 bg-gray-200" style={{ backgroundImage: "url('./images/cafe2.jpg')" }}>
     <div className="container mx-auto flex items-center justify-center h-full">
       <h1 className="text-4xl font-bold text-white text-shadow-lg bg-opacity-75 p-2">
@@ -68,7 +66,7 @@ const Home = () => {
     <div className="flex flex-col mr-2 ml-2 sm:mr-0 sm:ml-0 md:flex-row items-center bg-gray-100 rounded-lg p-6">
       <div className="md:w-1/2 p-6 text-center rounded-lg md:rounded-r-none flex flex-col items-center">
         <h2 className="text-3xl font-semibold text-amber-900 mb-4">
-          Dicas de como cuidar do <b>Seu</b> Café
+          Dicas de como preparar o <b>Seu</b> Café
         </h2>
         <p className="text-amber-800 font-medium mb-6">
           <b>™</b>
