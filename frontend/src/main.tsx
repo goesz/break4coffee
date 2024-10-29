@@ -9,6 +9,7 @@ import Teste from './routes/padrao.tsx';
 import Checkout from './routes/checkout.tsx';
 import Login from './routes/login.tsx';
 import Pedidos from './routes/pedidos.tsx';
+import Home from './routes/homepage.tsx'
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
+    element: <Home />
+  },
+  {
+    path: "/cadastro",
     element: <App />
   },
   {

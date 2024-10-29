@@ -25,7 +25,7 @@ export default function Navbar() {
 
   return (
 <nav className="bg-gray-300 mb-2 p-4">
-  <div className="container mx-auto flex justify-between items-center">
+  <div className="container mx-auto flex  justify-between items-center">
     <div className="flex mb-4 md:mb-0"> {}
       <img
         src="./images/logo.png"
@@ -34,21 +34,21 @@ export default function Navbar() {
       />
       <span className="text-amber-950 font-bold text-xl"></span> {}
     </div>
-    <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4"> {}
-      <ul className="flex text-xl space-x-6">
+    <div className="relative md:flex-row space-y-2 md:space-y-0 md:space-x-4"> {}
+      <ul className="flex space-x-6">
         <li>
           <Link to="/produtos" className="text-amber-950 duration-200 hover:text-amber-800">
-            <b>Produtos</b>
+            <b>PRODUTOS</b>
           </Link>
         </li>
         <li>
           <Link to="/contato" className="text-amber-950 duration-200 hover:text-amber-800">
-            <b>Contato</b>
+            <b>CONTATO</b>
           </Link>
         </li>
         <li>
           <Link to="/" className="text-amber-950 duration-200 hover:text-amber-800">
-            <b>Sobre</b>
+            <b>SOBRE</b>
           </Link>
         </li>
       </ul>
@@ -57,7 +57,7 @@ export default function Navbar() {
       {!isLoggedIn ? (
         <input
           type="button"
-          className="cursor-pointer text-center h-6 text-white bg-amber-950 rounded-lg font-medium px-4 py-0  hover:bg-amber-800 duration-200"
+          className="cursor-pointer text-center h-6 text-amber-950 bg-gray-300 rounded-sm font-medium px-4 py-0  hover:bg-amber-700 duration-200"
           value="Login"
           onClick={handleClick}
         />

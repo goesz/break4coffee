@@ -8,7 +8,7 @@ import { LoginController } from "./controllers/LoginController";
 import { ListProductsController } from "./controllers/ListProductsController";
 import { CreateProductController } from "./controllers/CreateProductController";
 
-
+// --
 export async function routes(fastify: FastifyInstance, options: FastifyPluginOptions){
 
     fastify.get("/teste", async (request: FastifyRequest, reply: FastifyReply) => {
