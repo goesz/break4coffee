@@ -23,7 +23,7 @@ const Cart = ({ items }: { items: CartItem[] }) => {
 
   return (
     items.length > 0 && (
-      <div className="fixed bottom-0 right-0 m-4 bg-white shadow-lg rounded-lg p-4 w-80">
+      <div className="fixed bottom-0 left-0 m-4 bg-white shadow-lg rounded-lg p-4 w-80">
         <h3 className="text-lg font-semibold mb-2">Carrinho</h3>
         {items.map((item) => (
           <div key={item.id} className="flex justify-between items-center mb-2">
