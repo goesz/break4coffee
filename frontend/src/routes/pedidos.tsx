@@ -65,22 +65,24 @@ const Pedidos = () => {
                         <p className="text-gray-700">Você não tem pedidos.</p>
                     ) : (
                         <ul className="list-disc pl-5">
-                                                <h1 className="text-amber-800 font-semibold text-center text-5xl">Seus Pedidos:</h1>
-                                                <h1 className="text-gray-500 font-style: italic font-semibold text-center text-1xl opacity-20">Muito obrigado pela confiança em nosso trabalho!</h1> <br></br> <br></br>
+                                                <h1 className="text-amber-800 font-semibold text-center text-5xl"><i>Pedidos</i></h1>
+                                                <h1 className="text-gray-500 font-style: italic font-semibold text-center text-1xl opacity-20">Muito obrigado pela confiança em nosso trabalho!</h1><br></br>
                             {pedidos.map(pedido => (
-                                <li key={pedido.id} className="mb-4 relative bg-white shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-105">
-                                    <div className="relative h-32">
+                                <li key={pedido.id} className=" p-4 bg-white shadow-lg mt-2 mr-4 ml-2 rounded-lg transform transition-colors duration-300 hover:bg-gray-100">
+        <div className="flex justify-center items-center">
+        <div className="w-48 h-48 rounded-lg overflow-hidden flex justify-center items-center">
                                         <img
                                             src={`/images/${pedido.id_produto}.png`}
                                             alt={pedido.descricao}
-                                            className="absolute w-36 h-36 -top-12 left-1/2 transform -translate-x-1/2 rounded-full shadow-lg"
+                                            className="w-48 h-48 object-cover"
                                         />
+                                        </div>
                                     </div>
                                     <div className="p-4">
                                         <p><strong>Produto:</strong> {pedido.descricao}</p>
                                         <p><strong>Valor:</strong> R$ {pedido.valor.toFixed(2)}</p>
                                         <p><strong>Feito em:</strong>   {formatDate(pedido.created_at)}</p>
-                                        <p><strong>Loja parceira:</strong>   {pedido.loja}</p>
+                                        <p><strong>Loja parceira:</strong>   {pedido.loja}</p><br></br>
                                     </div>
                                 </li>
                             ))}

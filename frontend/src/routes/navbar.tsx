@@ -26,16 +26,16 @@ export default function Navbar() {
   return (
 <nav className="bg-gray-300 mb-2 p-4">
   <div className="container mx-auto flex justify-between items-center">
-    <div className="flex items-center"> {}
+    <div className="flex mb-4 md:mb-0"> {}
       <img
         src="./images/logo.png"
         alt="Break4Coffee logo"
         className="h-10 w-10 mr-2"
       />
-      <span className="text-amber-950 font-bold text-xl">B4C</span> {}
+      <span className="text-amber-950 font-bold text-xl"></span> {}
     </div>
-    <div className="flex-grow flex justify-center"> {}
-      <ul className="flex text-xl space-x-4">
+    <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4"> {}
+      <ul className="flex text-xl space-x-6">
         <li>
           <Link to="/produtos" className="text-amber-950 duration-200 hover:text-amber-800">
             <b>Produtos</b>
@@ -48,7 +48,7 @@ export default function Navbar() {
         </li>
         <li>
           <Link to="/" className="text-amber-950 duration-200 hover:text-amber-800">
-            <b>Sobre Nós</b>
+            <b>Sobre</b>
           </Link>
         </li>
       </ul>
@@ -57,12 +57,12 @@ export default function Navbar() {
       {!isLoggedIn ? (
         <input
           type="button"
-          className="cursor-pointer text-center h-6 text-white bg-amber-950 rounded-lg font-medium px-4 py-0 hover:scale-105 duration-500"
+          className="cursor-pointer text-center h-6 text-white bg-amber-950 rounded-lg font-medium px-4 py-0  hover:bg-amber-800 duration-200"
           value="Login"
           onClick={handleClick}
         />
       ) : (
-        <div className="relative inline-block">
+        <div className="relative px-4 mr-4 mt-2 inline-block">
           <button onClick={handleDrop} className="focus:outline-none">
             <FaUserCircle className="text-amber-950 text-2xl" />
           </button>
