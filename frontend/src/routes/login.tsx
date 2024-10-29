@@ -71,7 +71,7 @@ interface LoginResponse {
     };
 
   return (
-    <div>
+    <div className="bg-gray-300">
       <Navbar />
       <div className="w-full h-full min-h-screen bg-gray-300 flex flex-col items-center px-4 relative">
         <img
@@ -106,11 +106,11 @@ interface LoginResponse {
             <input
               type="submit"
               value="Entrar"
-              className="cursor-pointer text-white w-full p-2 bg-amber-950 rounded-lg font-medium hover:scale-105 duration-200"
+              className="cursor-pointer text-white w-full p-2 bg-amber-950 rounded-lg font-medium hover:bg-amber-900 duration-200"
               />
           </form>
                         <button onClick={handleSignUp}
-              className="cursor-pointer text-white w-full p-2 bg-amber-950 rounded-lg font-medium hover:scale-105 duration-200 left-52">Cadastrar</button>
+              className="cursor-pointer text-white w-full p-2 bg-amber-950 rounded-lg font-medium hover:bg-amber-900 duration-200 left-52">Cadastrar</button>
 
           {userProfile && (
             <div className="mt-10 p-4 bg-white rounded-lg shadow-md">
