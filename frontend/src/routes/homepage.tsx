@@ -71,7 +71,7 @@ const Home = () => {
           Dicas de como cuidar do <b>Seu</b> Café
         </h2>
         <p className="text-amber-800 font-medium mb-6">
-          Conheça nossa linha de <b>Cold Brew e Refreshers™</b>
+          <b>™</b>
         </p>
         <button className="px-6 py-2 border-2 border-amber-900 text-amber-900 rounded-lg hover:bg-amber-900 hover:text-white transition">
           Saiba mais
