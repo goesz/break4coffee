@@ -77,22 +77,66 @@ const Checkout = () => {
                 <h3 className="text-xl font-bold">Total: R${total.toFixed(2)}</h3>
               </div>
             </div>
+
+      <div className="bg-white shadow-lg rounded-lg p-4 mb-4">
+      <h2 className="text-xl font-semibold mb-2">Endereço de entrega:</h2>
+      <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        
+        <div>
+          <label htmlFor="cep" className="block text-black">CEP</label>
+          <input
+            type="text"
+            id="cep"
+            name="cep"
+            className="w-full px-4 py-2 bg-white border border-amber-900 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-900"
+            placeholder=""
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="numero" className="block text-black">Número</label>
+          <input
+            type="number"
+            id="numero"
+            name="numero"
+            className="w-full px-4 py-2 bg-white border border-amber-900 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-900"
+            placeholder=""
+            required
+          />
+        </div>
+        <div className="md:col-span-2">
+          <label htmlFor="rua" className="block text-black">Rua</label>
+          <input
+            type="text"
+            id="rua"
+            name="rua"
+            className="w-full px-4 py-2 bg-white border border-amber-900 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-900"
+            placeholder=""
+            required
+          />
+        </div>
+
+
+      </form>
+    </div>
             <div className="flex gap-4 justify-center">
               <button
-                className="bg-amber-950 text-white px-6 py-2 rounded-lg font-medium transition-transform duration-500 hover:scale-105"
+                className="px-6 py-2 bg-amber-950 font-bold border-2 border-amber-950 text-gray-300 rounded-lg hover:bg-white hover:border-amber-950 hover:text-amber-950 transition"
                 onClick={handleFinalize}
-              >
-                Finalizar Compra
+                >
+                Comprar
               </button>
               <button
-                className="bg-amber-950 text-white px-6 py-2 rounded-lg font-medium transition-transform duration-500 hover:scale-105"
+                className="px-6 py-2 border-2 font-semibold border-amber-950 text-amber-950 rounded-lg transition"
                 onClick={handleBack}
-              >
+                >
                 Alterar Itens
               </button>
             </div>
-          </div>
+          </div>         
         )}
+        
       </div>
       <Footer />
     </main>
