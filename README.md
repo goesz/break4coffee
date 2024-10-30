@@ -25,7 +25,8 @@ Break4Coffee is an online coffee shop where users can browse products, make purc
    ```bash
    git clone https://github.com/goesz/break4coffee.git
 
-## Environment Variables: Configure the environment variables required for MongoDB in .env files.
+## Environment Variables
+Configure the environment variables required for MongoDB in .env files.
 
 ## Database
 This project uses MongoDB as the database with Prisma ORM to manage and interact with the data models.
