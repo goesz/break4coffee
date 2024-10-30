@@ -81,7 +81,7 @@ const ProductCard = () => {
         </div>
         
         <div className="p-2 h-auto flex flex-col">
-          <h2 className="text-xl text-amber-800 font-semibold mb-2 text-center">{product.nome}</h2>
+          <h2 className="text-xl text-amber-800 font-bold mb-2 text-center">{product.nome}</h2>
           <p className="text-amber-950 mb-2">
             <span className="font-bold"></span>  {// product.tipo
             }
