@@ -88,7 +88,7 @@ const Checkout = () => {
             type="text"
             id="cep"
             name="cep"
-            className="w-full px-4 py-2 bg-white border border-amber-900 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-900"
+            className="w-full px-4 py-2 bg-white border border-amber-950 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-950"
             placeholder=""
             required
           />
@@ -100,7 +100,7 @@ const Checkout = () => {
             type="number"
             id="numero"
             name="numero"
-            className="w-full px-4 py-2 bg-white border border-amber-900 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-900"
+            className="w-full px-4 py-2 bg-white border border-amber-950 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-950"
             placeholder=""
             required
           />
@@ -111,7 +111,7 @@ const Checkout = () => {
             type="text"
             id="rua"
             name="rua"
-            className="w-full px-4 py-2 bg-white border border-amber-900 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-900"
+            className="w-full px-4 py-2 bg-white border border-amber-950 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-950"
             placeholder=""
             required
           />
