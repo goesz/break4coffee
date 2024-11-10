@@ -89,8 +89,8 @@ const ProductCard = () => {
           <p className="text-amber-950 ml-2 mb-2 mr-2 font-medium">
             <span className="font-bold"></span> {product.descricao}
           </p>
-          <p className="text-gray-900 ml-2">
-            <span className="font-bold"></span> R${product.valor.toFixed(2)}
+          <p className="text-gray-900 ml-2 mb-2 font-bold">
+            <span className="font-bold"></span> <i>R$ {product.valor.toFixed(2).replace(".", ",")} </i>
           </p>
           <div className="absolute bottom-2 mt-2 right-4 mr-0">
             <button

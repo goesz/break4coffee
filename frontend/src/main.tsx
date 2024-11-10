@@ -10,6 +10,7 @@ import Checkout from './routes/checkout.tsx';
 import Login from './routes/login.tsx';
 import Pedidos from './routes/pedidos.tsx';
 import Home from './routes/homepage.tsx'
+import CoffeeArticle from './routes/tips.tsx';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: "produtos",
     element: < ProductCard />
+  },
+  {
+    path: "/dicas",
+    element: < CoffeeArticle />
   }
 ])
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './navbar';
 import Footer from './footer';
+import { useNavigate, Link } from 'react-router-dom';
 import { api } from '../services/api';
 import Cart from './cart';
 import { FaShoppingCart } from 'react-icons/fa'
@@ -18,12 +19,17 @@ interface ProductProps {
     quantidade: number;
   }
 
+
   
 
 const Home = () => {
+    const navigate = useNavigate();
     const [products, setProducts] = useState<ProductProps[]>([]);
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
-    
+    const sendToTips = () =>{
+      navigate("/dicas")
+    }
+  
   
     useEffect(() => {
       async function loadProducts() {
@@ -71,7 +77,7 @@ const Home = () => {
         <p className="text-amber-800 font-medium mb-6">
           <b>™</b>
         </p>
-        <button className="px-6 py-2 border-2 border-amber-900 text-amber-900 rounded-lg hover:bg-amber-900 hover:text-white transition">
+        <button className="px-6 py-2 border-2 border-amber-900 text-amber-900 rounded-lg hover:bg-amber-900 hover:text-white transition" onClick={sendToTips}>
           Saiba mais
         </button>
       </div>
@@ -83,7 +89,7 @@ const Home = () => {
         />
       </div>
     </div>
-
+      <h1>Os mais pedidos:</h1>
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mr-2 ml-2 sm:mr-0 sm:ml-0 mt-6">
     {products.slice(0, 4).map((product) => (
       <div

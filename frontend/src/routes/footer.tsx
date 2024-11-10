@@ -1,39 +1,92 @@
 import { FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from 'react-icons/fi';
+import React, { useRef, useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { Coffee, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-300 text-amber-950 py-8 w-full">
-      <div className="container mx-auto px-4 max-w-screen-lg text-center">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <h2 className="text-2xl font-bold text-left">Break4Coffee</h2>
-            <p className="text-gray-800">Para quando há pouco tempo para parar!</p>
-          </div>
-          <nav className="mb-4 md:mb-0">
-            <ul className="flex space-x-4">
-            </ul>
-          </nav>
-
+    <footer className="bg-amber-950 mt-2 text-amber-100">
+    <div className="container mx-auto px-4 py-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <h2 className="text-2xl font-bold  cursor-pointer flex items-center mb-4">
+            <Coffee className="mr-2" />
+            Break4Coffee
+          </h2>
+          <p className="mb-4">Para quando há pouco tempo para parar!</p>
           <div className="flex space-x-4">
-            <a href="https://facebook.com" className="hover:text-amber-800 hover:scale-105 duration-200">
-              <FiFacebook size={24} />
-            </a>
-            <a href="https://twitter.com" className="hover:text-amber-800 hover:scale-105 duration-200">
-              <FiTwitter size={24} />
-            </a>
-            <a href="https://instagram.com" className="hover:text-amber-800 hover:scale-105 duration-200">
-              <FiInstagram size={24} />
-            </a>
-            <a href="https://linkedin.com" className="hover:text-amber-800 hover:scale-105 duration-200">
-              <FiLinkedin size={24} />
-            </a>
+            <div className="hover:text-amber-300  cursor-pointer transition-colors">
+              <Facebook size={20} />
+            </div>
+            <div className="hover:text-amber-300  cursor-pointer transition-colors">
+              <Twitter size={20} />
+            </div>
+            <div className="hover:text-amber-300  cursor-pointer transition-colors">
+              <Instagram size={20} />
+            </div>
+            <div className="hover:text-amber-300  cursor-pointer transition-colors">
+              <Linkedin size={20} />
+            </div>
           </div>
         </div>
-
-        <div className="text-center text-gray-800 mt-4">
-          <p>&copy; 2024 Break4Coffee. Todos os direitos reservados.</p>
+        
+        <div>
+          <h3 className="text-lg font-semibold  cursor-pointer mb-4">Produtos</h3>
+          <ul className="space-y-2">
+            <li><span className="hover:text-amber-300  cursor-pointer transition-colors">Cafés Especiais</span></li>
+            <li><span className="hover:text-amber-300  cursor-pointer transition-colors">Chás</span></li>
+            <li><span className="hover:text-amber-300  cursor-pointer transition-colors">Doces</span></li>
+            <li><span className="hover:text-amber-300  cursor-pointer transition-colors">Salgados</span></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Sobre Nós</h3>
+          <ul className="space-y-2">
+            <li><span className="hover:text-amber-300 transition-colors">Nossa História</span></li>
+            <li><span className="hover:text-amber-300 transition-colors">Localizações</span></li>
+            <li><span className="hover:text-amber-300 transition-colors">Trabalhe Conosco</span></li>
+            <li><span className="hover:text-amber-300 transition-colors">Sustentabilidade</span></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Contato</h3>
+          <ul className="space-y-2">
+            <li className="flex items-center">
+              <Phone size={16} className="mr-2" />
+              <span>(11) 1234-5678</span>
+            </li>
+            <li className="flex items-center">
+              <Mail size={16} className="mr-2" />
+              <span>contato@break4coffee.com</span>
+            </li>
+            <li className="flex  cursor-pointer items-center">
+              <MapPin size={16} className="mr-2" />
+              <span>São Paulo</span>
+            </li>
+          </ul>
         </div>
       </div>
-    </footer>
-  );
+      
+      <div className="mt-8 pt-8 border-t border-amber-800">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <p>&copy; 2024 Break4Coffee. Todos os direitos reservados.</p>
+          <div className="mt-4 md:mt-0">
+            <form onSubmit={(e) => e.preventDefault()} className="flex space-x-2">
+              <input 
+                type="email" 
+                placeholder="Seu e-mail" 
+                className="bg-amber-800 border-amber-700 text-amber-100 placeholder-amber-400"
+              />
+              <button type="submit"  className="bg-amber-700 text-amber-100 hover:bg-amber-600">
+                Inscrever-se
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+)
 }

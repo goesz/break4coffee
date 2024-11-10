@@ -19,7 +19,7 @@ model Customer {
   email            String   @unique
   password         String
   role             String @default("user")
-  saldo            Float @default(50)
+  saldo            Float @default(500)
   status           Boolean
   created_at       DateTime? @default(now())
   updated_at       DateTime? @default(now())
