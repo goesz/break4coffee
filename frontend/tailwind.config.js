@@ -10,6 +10,7 @@ export default {
         'chocolate-cosmos': '#3D0814',
         'custom-green': '#065f46',
         'custom-red': '#b91c1c',
+        'custom-black': '#3f3f3f'
       },
       zIndex: {
         '-1': '-1',
