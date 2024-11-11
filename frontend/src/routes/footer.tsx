@@ -76,16 +76,19 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p>&copy; 2024 Break4Coffee. Todos os direitos reservados.</p>
           <div className="mt-4 md:mt-0">
-            <form onSubmit={(e) => e.preventDefault()} className="flex space-x-2">
-              <input 
-                type="email" 
-                placeholder="Seu e-mail" 
-                className="bg-amber-800 border-amber-700 text-amber-100 placeholder-amber-400"
-              />
-              <button type="submit"  className="bg-amber-700 text-amber-100 hover:bg-amber-600">
-                Inscrever-se
-              </button>
-            </form>
+          <form onSubmit={(e) => e.preventDefault()} className="flex space-x-2 items-center">
+  <input 
+    type="email" 
+    placeholder="Seu e-mail" 
+    className="w-64 p-3 rounded-lg bg-gray-300 border-2 border-amber-700 text-amber-950 placeholder-amber-950 focus:outline-none focus:ring-2 focus:ring-amber-500 transition duration-200"
+  />
+  <button 
+    type="submit" 
+    className="px-6 py-3 rounded-lg bg-amber-950 border-gray-300 border-2 text-amber-100 hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 transition duration-200"
+  >
+    Inscrever-se
+  </button>
+</form>
           </div>
         </div>
       </div>
