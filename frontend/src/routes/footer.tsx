@@ -37,9 +37,9 @@ export default function Footer() {
           <h3 className="text-lg font-semibold  cursor-pointer mb-4" onClick={sendToProducts}>Produtos</h3>
           <ul className="space-y-2">
             <li onClick={sendToProducts}><span className="hover:text-amber-300  cursor-pointer transition-colors">Cafés Especiais</span></li>
-            <li><span className="hover:text-amber-300  cursor-pointer transition-colors">Chás</span></li>
-            <li><span className="hover:text-amber-300  cursor-pointer transition-colors">Doces</span></li>
-            <li><span className="hover:text-amber-300  cursor-pointer transition-colors">Salgados</span></li>
+            <li><span className="hover:text-amber-300  cursor-pointer transition-colors">Bebidas Geladas</span></li>
+            <li><span className="hover:text-amber-300  cursor-pointer transition-colors">Sucos Naturais</span></li>
+            <li><span className="hover:text-amber-300  cursor-pointer transition-colors">Sucos Integrais</span></li>
           </ul>
         </div>
         
