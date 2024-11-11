@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Coffee } from 'lucide-react'
 import { useNavigate, Link } from 'react-router-dom';
-import Dropdown from './dropdown'; // Certifique-se de que o caminho está correto
+import Dropdown from './dropdown';
 import { FaUserCircle } from 'react-icons/fa';
 
 export default function Navbar() {
@@ -27,11 +28,7 @@ export default function Navbar() {
 <nav className="mb-2 p-4">
   <div className="container mx-auto flex  justify-between items-center">
     <div className="flex mb-4 md:mb-0"> {}
-      <img
-        src="./images/logo.png"
-        alt="Break4Coffee logo"
-        className="h-10 w-10 mr-2"
-      />
+    <Coffee className="mr-2 text-amber-950" />
       <span className="text-amber-950 font-bold text-xl"></span> {}
     </div>
     <div className="relative md:flex-row space-y-2 md:space-y-0 md:space-x-4"> {}
