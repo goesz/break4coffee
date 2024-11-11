@@ -53,6 +53,9 @@ const ProductCard = () => {
       return [...prevItems, { ...product, quantidade: 1 }];
     });
   };
+  const removeFromCart = (itemId: string) => {
+    setCartItems(prevItems => prevItems.filter(item => item.id !== itemId));
+  };
 
   return (
 <main className="bg-gray-300 flex flex-col min-h-screen">
@@ -106,7 +109,7 @@ const ProductCard = () => {
       </div>
     </div>
   </div>
-  <Cart items={cartItems} />
+  <Cart items={cartItems} onRemoveItem={removeFromCart} />
   <Footer />
 </main>
 

@@ -1,9 +1,12 @@
-import { FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from 'react-icons/fi';
-import React, { useRef, useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
 import { Coffee, Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Footer() {
+    const navigate = useNavigate()
+    const sendToProducts = () =>{
+      navigate("/produtos")
+    }
+
   return (
     <footer className="bg-amber-950 mt-2 text-amber-100">
     <div className="container mx-auto px-4 py-12">
@@ -31,9 +34,9 @@ export default function Footer() {
         </div>
         
         <div>
-          <h3 className="text-lg font-semibold  cursor-pointer mb-4">Produtos</h3>
+          <h3 className="text-lg font-semibold  cursor-pointer mb-4" onClick={sendToProducts}>Produtos</h3>
           <ul className="space-y-2">
-            <li><span className="hover:text-amber-300  cursor-pointer transition-colors">Cafés Especiais</span></li>
+            <li onClick={sendToProducts}><span className="hover:text-amber-300  cursor-pointer transition-colors">Cafés Especiais</span></li>
             <li><span className="hover:text-amber-300  cursor-pointer transition-colors">Chás</span></li>
             <li><span className="hover:text-amber-300  cursor-pointer transition-colors">Doces</span></li>
             <li><span className="hover:text-amber-300  cursor-pointer transition-colors">Salgados</span></li>

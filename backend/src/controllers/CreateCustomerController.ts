@@ -11,14 +11,18 @@ class CreateCustomerController {
         return;
     } catch (error) {
         if (error instanceof Error) {
-            if (error.message === 'E-mail já utilizado') {
-                reply.status(422).send({ msg: 'E-mail já utilizado' });
+            if (error.message === 'Email already in use') {
+                reply.status(422).send({ msg: 'Esse endereço de e-mail já está em uso.' });
                 return;
             }
 
-            if (error.message === 'Preencha todos os campos') {
+            if (error.message === 'Please fill in all fields') {
                 reply.status(400).send({ msg: 'Preencha todos os campos' });
                 return;
+            }
+            if (error.message === 'The password must be at least 8 characters long'){
+                reply.status(433).send({ msg: 'A senha precisa ter no mínimo 8 caracteres' });
+                return
             }
 
             console.error('Erro ao processar a requisição:', error);

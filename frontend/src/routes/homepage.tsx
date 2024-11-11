@@ -27,7 +27,7 @@ const Home = () => {
     const [products, setProducts] = useState<ProductProps[]>([]);
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
     const sendToTips = () =>{
-      navigate("/dicas")
+      navigate("/blog/dicas-de-preparo")
     }
   
   
@@ -57,6 +57,9 @@ const Home = () => {
         return [...prevItems, { ...product, quantidade: 1 }];
       });
     };
+    const removeFromCart = (itemId: string) => {
+      setCartItems(prevItems => prevItems.filter(item => item.id !== itemId));
+    };
   return (
 <main className="bg-gray-300 flex flex-col min-h-screen">
   <Navbar />
@@ -75,7 +78,7 @@ const Home = () => {
           Dicas de como preparar o <b>Seu</b> Café
         </h2>
         <p className="text-amber-800 font-medium mb-6">
-          <b>™</b>
+          <b>Acesse nosso blog e fique por dentro de nossas dicas.</b>
         </p>
         <button className="px-6 py-2 border-2 border-amber-900 text-amber-900 rounded-lg hover:bg-amber-900 hover:text-white transition" onClick={sendToTips}>
           Saiba mais
@@ -128,7 +131,7 @@ const Home = () => {
     ))}
   </div>
   </div>
-  <Cart items={cartItems} />
+  <Cart items={cartItems} onRemoveItem={removeFromCart} />
   <Footer />
 </main>
 

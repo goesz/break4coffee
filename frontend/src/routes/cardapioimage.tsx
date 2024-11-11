@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 const CardapioImage = () => {
-  const [fadeOut, setFadeOut] = useState(true); // Estado inicial para escurecer
+  const [fadeOut, setFadeOut] = useState(true); 
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setFadeOut(false); // Remove o efeito de escurecimento após 2 segundos
-    }, 200); // 2000 milissegundos = 2 segundos
+      setFadeOut(false);
+    }, 200); 
 
-    return () => clearTimeout(timer); // Limpa o timer quando o componente é desmontado
+    return () => clearTimeout(timer);
   }, []);
 
   return (
