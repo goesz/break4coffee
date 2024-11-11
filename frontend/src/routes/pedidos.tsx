@@ -41,9 +41,14 @@ const Pedidos = () => {
         const fetchPedidos = async () => {
             try {
                 const response = await api.get('/pedidos', {
-                    params: { customer_id: userId }, 
+                    params: { customer_id: userId },
                 });
-                setPedidos(response.data);
+        
+                const sortedPedidos = response.data.sort((a: Pedido, b: Pedido) => {
+                    return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+                });
+        
+                setPedidos(sortedPedidos);
             } catch (err) {
                 setError('Erro ao carregar os pedidos.');
             }

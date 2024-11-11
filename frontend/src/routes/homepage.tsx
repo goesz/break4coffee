@@ -95,39 +95,43 @@ const Home = () => {
       <h1 className="text-xl font-bold text-amber-950">Os mais pedidos:</h1>
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mr-2 ml-2 sm:mr-0 sm:ml-0 mt-6">
     {products.slice(0, 4).map((product) => (
-      <div
-        key={product.id}
-        className="py-6 bg-white shadow-lg rounded-lg transform transition-colors duration-300 hover:bg-gray-100"
-      >
-        <div className="flex justify-center items-center">
-          <div className="w-48 h-48 rounded-lg overflow-hidden flex justify-center items-center">
-            <img
-              src={`/images/${product.id}.png`}
-              alt={product.nome}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-        
-        <div className="p-2 flex flex-col">
-          <h2 className="text-xl text-amber-800 font-semibold mb-2 text-center">{product.nome}</h2>
-          <p className="text-amber-950 mb-2">
-            <span className="font-bold"></span> {/* {product.tipo} */}
-          </p>
-          <p className="text-amber-950 mb-2 ml-2">{product.descricao}</p>
-          <p className="text-gray-900 ml-2">
-            <span className="font-bold"></span> R${product.valor.toFixed(2)}
-          </p>
-          <div className="absolute bottom-2 mt-2 right-4 mr-0">
-            <button
-              className="flex justify-center bg-amber-950 w-20 text-white p-3 rounded-lg transition-colors hover:bg-amber-900 duration-200 font-medium s: lg:w-14"
-              onClick={() => addToCart(product)}
-            >
-              <FaShoppingCart className="text-xl" />
-            </button>
-          </div>
-        </div>
-      </div>
+         <div
+         key={product.id}
+         className="py-8 bg-white shadow-lg mt-2 mr-2 ml-2 rounded-lg transform transition-colors duration-300 hover:bg-gray-100"
+       >
+         <div className="flex justify-center items-center">
+         <div className="w-48 h-48 rounded-lg overflow-hidden flex justify-center items-center">
+ 
+           <img
+             src={`/images/${product.id}.png`}
+             alt={product.nome}
+             className="w-full h-full object-cover"
+           />
+           </div>
+         </div>
+         
+         <div className="p-2 h-auto flex flex-col">
+           <h2 className="text-xl text-amber-800 font-bold text-center">{product.nome}</h2>
+           <p className="text-amber-950 mb-2">
+             <span className="font-bold"></span>  {// product.tipo
+             }
+           </p>
+           <p className="text-amber-950 ml-2 text-center mb-2 mr-2 font-medium">
+             <span className="font-bold"></span> {product.descricao}
+           </p>
+           <p className="absolute text-gray-900  bottom-2 ml-2 mb-2 font-bold">
+             <span className="font-bold"></span> <i>R$ {product.valor.toFixed(2).replace(".", ",")} </i>
+           </p>
+           <div className="absolute bottom-2 mt-2 right-4 mr-0">
+             <button
+               className="flex justify-center bg-amber-950 w-20 text-white p-3 rounded-lg transition-colors hover:bg-amber-900 duration-200 font-medium s: lg:w-14"
+               onClick={() => addToCart(product)}
+             >
+               <FaShoppingCart className="text-xl" />
+             </button>
+           </div>
+         </div>
+           </div>
     ))}
   </div>
   </div>
