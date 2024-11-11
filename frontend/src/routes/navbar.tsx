@@ -24,7 +24,7 @@ export default function Navbar() {
   const isLoggedIn = !!sessionStorage.getItem('token');
 
   return (
-<nav className="bg-gray-300 mb-2 p-4">
+<nav className="mb-2 p-4">
   <div className="container mx-auto flex  justify-between items-center">
     <div className="flex mb-4 md:mb-0"> {}
       <img
@@ -57,7 +57,7 @@ export default function Navbar() {
       {!isLoggedIn ? (
         <input
           type="button"
-          className="cursor-pointer text-center h-6 text-amber-950 bg-gray-300 rounded-sm font-medium px-4 py-0  hover:bg-amber-700 duration-200"
+          className="group relative w-full flex justify-center cursor-pointer px-4 transition-colors duration-300 ease-in-out text-sm font-bold rounded-lg border-2 border-amber-900 text-amber-900 hover:text-gray-200 hover:bg-amber-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-950"
           value="Login"
           onClick={handleClick}
         />

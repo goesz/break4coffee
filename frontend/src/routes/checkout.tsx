@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from './navbar';
 import Footer from './footer';
 import { api } from '../services/api';
+import AddressForm from './adressform';
 
 interface CartItem {
   id: string;
@@ -80,45 +81,8 @@ const Checkout = () => {
 
       <div className="bg-white shadow-lg rounded-lg p-4 mb-4">
       <h2 className="text-xl font-semibold mb-2">Endereço de entrega:</h2>
-      <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        
-        <div>
-          <label htmlFor="cep" className="block text-black">CEP</label>
-          <input
-            type="text"
-            id="cep"
-            name="cep"
-            className="w-full px-4 py-2 bg-white border border-amber-950 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-950"
-            placeholder=""
-            required
-          />
-        </div>
+      <AddressForm></AddressForm>
 
-        <div>
-          <label htmlFor="numero" className="block text-black">Número</label>
-          <input
-            type="number"
-            id="numero"
-            name="numero"
-            className="w-full px-4 py-2 bg-white border border-amber-950 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-950"
-            placeholder=""
-            required
-          />
-        </div>
-        <div className="md:col-span-2">
-          <label htmlFor="rua" className="block text-black">Rua</label>
-          <input
-            type="text"
-            id="rua"
-            name="rua"
-            className="w-full px-4 py-2 bg-white border border-amber-950 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-950"
-            placeholder=""
-            required
-          />
-        </div>
-
-
-      </form>
     </div>
             <div className="flex gap-4 justify-center">
               <button

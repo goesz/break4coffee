@@ -11,8 +11,11 @@ interface CreateCustomerProps {
 class CreateCustomerService {
     async execute({ name, email, password, role }: CreateCustomerProps){
 
-    if(!name || !email || !password ||password.length <= 6){
-        throw new Error("Preencha todos os campos")
+    if(!name || !email || !password){
+        throw new Error("Please fill in all fields")
+    }
+    if (password.length <= 8){
+        throw new Error("The password must be at least 8 characters long")
     }
     const userExists = await prismaClient.customer.findUnique({ 
         where:{
@@ -20,7 +23,7 @@ class CreateCustomerService {
         }})
 
         if (userExists) {
-            throw new Error("E-mail já utilizado")
+            throw new Error("Email already in use")
           }
     const hashPassword = await bcrypt.hash(password, 10)
     const customer = await prismaClient.customer.create({
@@ -32,7 +35,7 @@ class CreateCustomerService {
             status: true
         }
     })
-    console.log("Rota de criar usuário chamada")
+    console.log("Create user route has been called")
 
         return customer
     }
