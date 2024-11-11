@@ -22,7 +22,7 @@ const CoffeeArticle = () => {
               className="w-full h-full object-cover rounded-lg"
             />
           </div>
-          <div className="prose prose-amber lg:prose-lg max-w-none">
+          <div className="prose prose-amber lg:prose-lg max-w-none text-amber-950 text-lg">
             <p className="lead">
               O <b>café</b> é mais do que uma simples bebida; é uma experiência sensorial que começa muito antes da primeira xícara. O cuidado no preparo é essencial para extrair o melhor sabor e aroma dos grãos. Neste artigo, exploraremos os passos cruciais para um café perfeito.
             </p>

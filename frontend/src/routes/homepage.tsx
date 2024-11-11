@@ -78,7 +78,7 @@ const Home = () => {
           Dicas de como preparar o <b>Seu</b> Café
         </h2>
         <p className="text-amber-800 font-medium mb-6">
-          <b>Acesse nosso blog e fique por dentro de nossas dicas.</b>
+          <b>Confira nosso blog e fique por dentro das dicas dos nossos especialistas</b>
         </p>
         <button className="px-6 py-2 border-2 border-amber-900 text-amber-900 rounded-lg hover:bg-amber-900 hover:text-white transition" onClick={sendToTips}>
           Saiba mais
@@ -92,7 +92,7 @@ const Home = () => {
         />
       </div>
     </div>
-      <h1>Os mais pedidos:</h1>
+      <h1 className="text-xl font-bold text-amber-950">Os mais pedidos:</h1>
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mr-2 ml-2 sm:mr-0 sm:ml-0 mt-6">
     {products.slice(0, 4).map((product) => (
       <div

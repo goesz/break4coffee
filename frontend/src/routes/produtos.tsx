@@ -25,6 +25,11 @@ interface CartItem extends ProductProps {
 const ProductCard = () => {
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isZoomed, setIsZoomed] = useState(false);
+
+  const handleZoom = () => {
+    setIsZoomed(!isZoomed);
+  };
   
 
   useEffect(() => {
@@ -78,6 +83,7 @@ const ProductCard = () => {
           <img
             src={`/images/${product.id}.png`}
             alt={product.nome}
+            onClick={handleZoom}
             className="w-full h-full object-cover"
           />
           </div>
