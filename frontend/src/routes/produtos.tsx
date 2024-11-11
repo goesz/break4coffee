@@ -75,7 +75,7 @@ const ProductCard = () => {
     {products.map((product) => (
       <div
         key={product.id}
-        className="py-6 bg-white shadow-lg mt-2 mr-2 ml-2 rounded-lg transform transition-colors duration-300 hover:bg-gray-100"
+        className="py-8 bg-white shadow-lg mt-2 mr-2 ml-2 rounded-lg transform transition-colors duration-300 hover:bg-gray-100"
       >
         <div className="flex justify-center items-center">
         <div className="w-48 h-48 rounded-lg overflow-hidden flex justify-center items-center">
@@ -90,15 +90,15 @@ const ProductCard = () => {
         </div>
         
         <div className="p-2 h-auto flex flex-col">
-          <h2 className="text-xl text-amber-800 font-bold mb-2 text-center">{product.nome}</h2>
+          <h2 className="text-xl text-amber-800 font-bold text-center">{product.nome}</h2>
           <p className="text-amber-950 mb-2">
             <span className="font-bold"></span>  {// product.tipo
             }
           </p>
-          <p className="text-amber-950 ml-2 mb-2 mr-2 font-medium">
+          <p className="text-amber-950 ml-2 text-center mb-2 mr-2 font-medium">
             <span className="font-bold"></span> {product.descricao}
           </p>
-          <p className="text-gray-900 ml-2 mb-2 font-bold">
+          <p className="absolute text-gray-900  bottom-2 ml-2 mb-2 font-bold">
             <span className="font-bold"></span> <i>R$ {product.valor.toFixed(2).replace(".", ",")} </i>
           </p>
           <div className="absolute bottom-2 mt-2 right-4 mr-0">
