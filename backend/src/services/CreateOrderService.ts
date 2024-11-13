@@ -9,8 +9,32 @@ interface CreateOrderProps {
     customer_id: string;
 }
 
+const filaDeRequisicoes: (() => Promise<void>)[] = [];
+
+async function processarRequisicao() {
+    if (filaDeRequisicoes.length > 0) {
+        const requisicao = filaDeRequisicoes.shift();
+        if (requisicao) {
+            await requisicao();
+            processarRequisicao();
+        }
+    }
+}
+
+async function adicionarRequisicaoNaFila(funcao: () => Promise<any>) {
+    filaDeRequisicoes.push(funcao);
+    if (filaDeRequisicoes.length === 1) {
+        processarRequisicao(); 
+    }
+}
+
+
 class CreateOrderService {
     async execute({ id_produto, loja, descricao, valor, customer_id }: CreateOrderProps) {
+        const valorArredondado = parseFloat(valor.toFixed(2));
+        console.log(valorArredondado);
+        console.log(typeof(valorArredondado));
+
         if (!valor || !descricao) {
             throw new Error("Preencha todos os campos");
         }
@@ -34,7 +58,7 @@ class CreateOrderService {
                 id: customer_id
             },
             data: {
-                saldo: customer.saldo - valor
+                saldo: customer.saldo - valorArredondado
             }
         });
 
@@ -50,9 +74,8 @@ class CreateOrderService {
         });
 
         console.log("Rota de criar pedido chamada");
-
         return pedido;
     }
 }
 
-export { CreateOrderService };
+export { CreateOrderService }

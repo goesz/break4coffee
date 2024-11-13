@@ -12,11 +12,17 @@ import Pedidos from './routes/pedidos.tsx';
 import Home from './routes/homepage.tsx'
 import CoffeeArticle from './routes/tips.tsx';
 import Localizacao from './routes/localizacao.tsx';
+import Estoque from './routes/inventory.tsx';
+import UserProfile from './routes/profile.tsx';
 
 const router = createBrowserRouter([
   {
     path: "/contato",
     element: <Contact />
+  },
+  {
+    path: "/meuperfil",
+    element: < UserProfile />
   },
   {
     path: "/meuspedidos",
@@ -53,6 +59,10 @@ const router = createBrowserRouter([
   {
     path: "/blog/dicas-de-preparo",
     element: < CoffeeArticle />
+  },
+  {
+    path: "/estoque",
+    element: < Estoque />
   }
 ])
 

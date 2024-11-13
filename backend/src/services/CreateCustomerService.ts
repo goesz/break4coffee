@@ -14,7 +14,7 @@ class CreateCustomerService {
     if(!name || !email || !password){
         throw new Error("Please fill in all fields")
     }
-    if (password.length <= 8){
+    if (password.length < 8){
         throw new Error("The password must be at least 8 characters long")
     }
     const userExists = await prismaClient.customer.findUnique({ 

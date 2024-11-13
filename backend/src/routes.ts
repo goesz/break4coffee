@@ -1,4 +1,4 @@
-import { FastifyInstance, FastifyPluginOptions, FastifyRequest, FastifyReply } from "fastify";
+import fastify, { FastifyInstance, FastifyPluginOptions, FastifyRequest, FastifyReply } from "fastify";
 import { CreateCustomerController } from "./controllers/CreateCustomerController";
 import { ListCustomersController } from "./controllers/ListCustomersController";
 import { DeleteCustomerController } from "./controllers/DeleteCustomerController";
@@ -7,12 +7,20 @@ import { ListOrdersController } from "./controllers/ListOrdersController";
 import { LoginController } from "./controllers/LoginController";
 import { ListProductsController } from "./controllers/ListProductsController";
 import { CreateProductController } from "./controllers/CreateProductController";
+import { InventoryController } from "./controllers/InventoryController";
+import { ShowUserController } from "./controllers/ShowUserController";
 
 // --
 export async function routes(fastify: FastifyInstance, options: FastifyPluginOptions){
 
     fastify.get("/teste", async (request: FastifyRequest, reply: FastifyReply) => {
         return { ok: true }
+    })
+    fastify.get('/user/profile', async (request: FastifyRequest, reply: FastifyReply) => {
+        return new ShowUserController().handle(request, reply);
+    });
+    fastify.post("/inventory", async (request: FastifyRequest, reply: FastifyReply) =>{
+        return new InventoryController().handle(request, reply)
     })
     fastify.post("/auth/register", async (request: FastifyRequest, reply: FastifyReply) =>{
         return new CreateCustomerController().handle(request, reply)

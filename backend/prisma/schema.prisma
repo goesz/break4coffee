@@ -36,6 +36,7 @@ model Produto {
   tipo        String @default("café")
   valor         Float
   loja        String @default("Break")
+  status      String @default("enabled")
   descricao   String
   created_at  DateTime? @default(now())
   updated_at  DateTime? @default(now())

@@ -4,7 +4,7 @@ import Footer from './footer';
 
 const Localizacao = () => {
   return (
-    <main className="bg-gray-100 flex flex-col min-h-screen">
+    <main className="bg-gray-300 flex flex-col min-h-screen">
       <Navbar />
 
       <div className="flex-grow container mx-auto px-4 py-8 mt-4">

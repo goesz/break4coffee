@@ -2,8 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Coffee, Mail, Lock, User } from 'lucide-react';
 import { api } from '../services/api';
-import Footer from './footer';
-import Navbar from './navbar';
+import NavbarLogin from './loginnav';
 
 import axios, { AxiosError } from 'axios'; 
 
@@ -32,7 +31,7 @@ interface LoginResponse {
     useEffect(() => {
       const token = sessionStorage.getItem('token');
       if (token) {
-          navigate('/produtos');
+          navigate('/');
       }
   }, [navigate]);
   
@@ -58,7 +57,7 @@ interface LoginResponse {
         sessionStorage.setItem('userId', user.id);
         sessionStorage.setItem('userRole', user.role);
         sessionStorage.setItem('userMoney', user.saldo);
-        navigate('/produtos')
+        navigate('/')
 
 
   
@@ -74,9 +73,9 @@ interface LoginResponse {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-200 to-gray-300">
-      <Navbar />
+      < NavbarLogin />
       <div className="flex-grow flex items-center justify-center py-2 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md mt-20 w-full space-y-4">
+        <div className="max-w-md mt-6 w-full space-y-4">
           <div>
             <Coffee className="mx-auto h-12 w-auto text-amber-900" />
             <h2 className=" text-center text-3xl font-extrabold text-amber-900">
@@ -180,7 +179,7 @@ interface LoginResponse {
 <br></br>
 
 
-      <Footer />
+ 
 
     </div>
   );

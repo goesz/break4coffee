@@ -25,33 +25,40 @@ const Checkout = () => {
   };
 
   const handleFinalize = async () => {
-    var userSaldo = parseFloat(sessionStorage.getItem('userMoney') || '0');
+    let userSaldo = parseFloat(sessionStorage.getItem('userMoney') || '0');
     if (!userId) return navigate('/login');
-    if (userSaldo < total){
-      console.log('você ta pobre')
-      return navigate('/produtos')}
+    if (userSaldo < total) {
+      console.log('Você está sem dinheiro');
+      return navigate('/produtos'); 
+    }
+  
     try {
-      await Promise.all(cartItems.map(async (item) => {
-        await api.post('/pedido', {
-          customer_id: userId,
-          descricao: item.nome,
-          valor: item.valor,
-          loja: 'Starbucks',
-          id_produto: item.id
-        });
-        console.log(item.valor);
-      }));
-
+      for (const item of cartItems) {
+        for (let i = 0; i < item.quantidade; i++) {
+          await api.post('/pedido', {
+            customer_id: userId,
+            descricao: item.nome,
+            valor: item.valor,
+            loja: 'Break',
+            id_produto: item.id
+          });
+          console.log(`Pedido para o item ${item.nome} feito com sucesso.`);
+        }
+      }
+  
+      userSaldo -= total;
+  
+      sessionStorage.setItem('userMoney', userSaldo.toString());
+  
       console.log('Pedidos criados com sucesso');
       alert('Pedido realizado com sucesso');
       navigate('/meuspedidos');
-      var userSaldo = total - userSaldo;
     } catch (error) {
       console.error('Erro ao finalizar compra:', error);
-      alert('Erro ao finalizar compra, saldo insuficiente.')
+      alert('Erro ao finalizar compra, por favor, tente novamente.');
     }
   };
-
+  
   const total = cartItems.reduce((sum, item) => sum + item.valor * item.quantidade, 0);
 
   return (

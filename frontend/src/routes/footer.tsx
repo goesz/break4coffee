@@ -26,9 +26,6 @@ export default function Footer() {
               <Facebook size={20} />
             </div>
             <div className="hover:text-amber-300  cursor-pointer transition-colors">
-              <Twitter size={20} />
-            </div>
-            <div className="hover:text-amber-300  cursor-pointer transition-colors">
               <Instagram size={20} />
             </div>
             <div className="hover:text-amber-300  cursor-pointer transition-colors">

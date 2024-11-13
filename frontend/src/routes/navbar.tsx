@@ -32,20 +32,20 @@ export default function Navbar() {
       <span className="text-amber-950 font-bold text-xl"></span> {}
     </div>
     <div className="relative md:flex-row space-y-2 md:space-y-0 md:space-x-4"> {}
-      <ul className="flex space-x-6">
+      <ul className="flex space-x-10">
         <li>
           <Link to="/produtos" className="text-amber-950 duration-200 hover:text-amber-800">
             <b>PRODUTOS</b>
           </Link>
         </li>
         <li>
-          <Link to="/contato" className="text-amber-950 duration-200 hover:text-amber-800">
-            <b>CONTATO</b>
+          <Link to="/sobre" className="text-amber-950 duration-200 hover:text-amber-800">
+            <b>SOBRE</b>
           </Link>
         </li>
         <li>
-          <Link to="/sobre" className="text-amber-950 duration-200 hover:text-amber-800">
-            <b>SOBRE</b>
+          <Link to="/blog/dicas-de-preparo" className="text-amber-950 duration-200 hover:text-amber-800">
+            <b>BLOG</b>
           </Link>
         </li>
       </ul>
