@@ -4,7 +4,7 @@ import { Coffee, Mail, Lock, User, Trash2 } from 'lucide-react';
 import { api } from '../services/api';
 import axios from 'axios';
 import Footer from '../routes/footer';
-import Navbar from '../routes/navbar';
+import NavbarLogin from '../routes/loginnav';
 
 interface CustomerProps {
   id: string;
@@ -98,8 +98,8 @@ export default function Cadastro() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-200 to-gray-300">
-      <Navbar />
-      <div className="flex-grow mt-20 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      < NavbarLogin />
+      <div className="flex-grow mt-2 flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
             <Coffee className="mx-auto h-12 w-auto text-amber-900" />
@@ -238,7 +238,6 @@ export default function Cadastro() {
 <br></br>
 <br></br>
 <br></br>
-      <Footer />
     </div>
   );
 }

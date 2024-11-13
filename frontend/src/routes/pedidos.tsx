@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from './navbar';
 import Footer from './footer';
 import { api } from '../services/api';
+import { FaSadTear } from 'react-icons/fa';
 
 interface Pedido {
     id: string;
@@ -67,7 +68,10 @@ const Pedidos = () => {
                     {error && <p className="text-red-500 mb-4">{error}</p>}
 
                     {pedidos.length === 0 ? (
-                        <p className="text-gray-700">Você não tem pedidos.</p>
+                                        <div className="flex justify-center items-center mr-4 text-amber-950 text-center">
+                                        <p>Você ainda não fez nenhum pedido </p>
+                                        <FaSadTear className="text-3xl ml-2" />
+                                    </div>
                     ) : (
                         <ul className="list-disc pl-5">
                                                 <h1 className="text-amber-800 font-semibold text-center text-5xl"><i>Pedidos</i></h1>
