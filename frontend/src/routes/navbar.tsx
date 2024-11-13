@@ -44,7 +44,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to="/" className="text-amber-950 duration-200 hover:text-amber-800">
+          <Link to="/sobre" className="text-amber-950 duration-200 hover:text-amber-800">
             <b>SOBRE</b>
           </Link>
         </li>

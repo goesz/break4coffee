@@ -11,6 +11,7 @@ import Login from './routes/login.tsx';
 import Pedidos from './routes/pedidos.tsx';
 import Home from './routes/homepage.tsx'
 import CoffeeArticle from './routes/tips.tsx';
+import Localizacao from './routes/localizacao.tsx';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/cadastro",
     element: <App />
+  },
+  {
+    path: "/sobre",
+    element: <Localizacao />
   },
   {
     path: "produtos",
