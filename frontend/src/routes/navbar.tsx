@@ -34,6 +34,11 @@ export default function Navbar() {
     <div className="relative md:flex-row space-y-2 md:space-y-0 md:space-x-4"> {}
       <ul className="flex space-x-10">
         <li>
+          <Link to="/" className="text-amber-950 duration-200 hover:text-amber-800">
+            <b>HOME</b>
+          </Link>
+        </li>
+        <li>
           <Link to="/produtos" className="text-amber-950 duration-200 hover:text-amber-800">
             <b>PRODUTOS</b>
           </Link>
@@ -41,11 +46,6 @@ export default function Navbar() {
         <li>
           <Link to="/sobre" className="text-amber-950 duration-200 hover:text-amber-800">
             <b>SOBRE</b>
-          </Link>
-        </li>
-        <li>
-          <Link to="/blog/dicas-de-preparo" className="text-amber-950 duration-200 hover:text-amber-800">
-            <b>BLOG</b>
           </Link>
         </li>
       </ul>
@@ -59,7 +59,7 @@ export default function Navbar() {
           onClick={handleClick}
         />
       ) : (
-        <div className="relative px-4 mr-4 mt-2 inline-block">
+        <div className="relative px-4 mt-2 inline-block">
           <button onClick={handleDrop} className="focus:outline-none">
             <FaUserCircle className="text-amber-950 text-2xl" />
           </button>
