@@ -108,7 +108,7 @@ const ProductCard = () => {
                     <p className="text-amber-950 mb-2">
                       <span className="font-bold"></span> {/* product.tipo */}
                     </p>
-                    <p className="text-amber-950 ml-2 text-center mb-2 mr-2 font-medium">
+                    <p className="text-amber-950 ml-6 text-justify-center mb-2 mr-2 font-medium">
                       <span className="font-bold"></span> {product.descricao}
                     </p>
                     <p className="absolute text-gray-900 bottom-2 ml-2 mb-2 font-bold">
