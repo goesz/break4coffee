@@ -33,3 +33,8 @@ This project uses MongoDB as the database with Prisma ORM to manage and interact
 
 ## Security
 Passwords are hashed with bcrypt to ensure user security.
+
+## Disclaimer
+Important: This project uses Session Storage to store user data during a session. I acknowledge that this approach is not recommended due to its vulnerabilities, such as data exposure on the client side and lack of protection against XSS (Cross-Site Scripting) attacks. The purpose of this implementation was to demonstrate the risks of client-side data manipulation during a presentation for my class.
+
+Now that the project is complete, my next step is to implement JWT (JSON Web Tokens) for secure user authentication and to store relevant user information, such as the user ID.
