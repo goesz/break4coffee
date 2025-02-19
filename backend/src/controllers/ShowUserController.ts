@@ -31,10 +31,13 @@ class ShowUserController {
                 return reply.status(404).send({ error: 'Usuário não encontrado' });
             }
             if (user.role === 'admin') {
-                return reply.status(203).send({ msg: 'Administrador autenticado!' });
+                return reply.status(200).send({ user,
+                    isAdmin: true });
             }
 
-            return reply.status(200).send(user);
+            return reply.status(200).send({ user,
+                isAdmin: false}
+            );
         } catch (error) {
             console.error(error);
             return reply.status(500).send({ error: 'Erro ao carregar perfil do usuário' });

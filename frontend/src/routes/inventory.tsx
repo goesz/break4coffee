@@ -17,6 +17,7 @@ interface ProductProps {
 
 const Estoque = () => {
   const [products, setProducts] = useState<ProductProps[]>([]);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,10 +31,11 @@ const Estoque = () => {
     const checkUserRole = async () => {
       try {
         const response = await api.get('/user/profile');
-        if (response.status === 203) {
+        if (response.status === 200 && response.data.isAdmin) {
+          setIsAdmin(true);
           loadProducts();
-        } else if (response.status === 200) {
-          navigate('/');
+        } else {
+          navigate('/'); 
         }
       } catch (error) {
         console.error("Erro ao verificar a função.", error);
