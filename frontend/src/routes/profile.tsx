@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../services/api';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaEnvelope, FaWallet, FaListAlt } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaWallet, FaListAlt, FaBox } from 'react-icons/fa';
 import Navbar from './navbar';
 import Footer from './footer';
 
@@ -10,10 +10,12 @@ interface UserProfileProps {
     name: string;
     email: string;
     saldo: number;
+    role: string;
 }
 
 const UserProfile = () => {
     const [user, setUser] = useState<UserProfileProps | null>(null);
+    const [isAdmin, setIsAdmin] = useState<boolean>(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -26,7 +28,10 @@ const UserProfile = () => {
 
             try {
                 const response = await api.get('/user/profile');
-                setUser(response.data);
+                setUser(response.data.user);
+                if (response.data.isAdmin) {
+                    setIsAdmin(true); // Marcar como admin
+                }
             } catch (error) {
                 console.error('Erro ao carregar perfil do usuário:', error);
             }
@@ -60,6 +65,7 @@ const UserProfile = () => {
                             <p className="text-gray-700 text-lg"><strong>Saldo:</strong> R$ {user.saldo.toFixed(2).replace('.', ',')}</p>
                         </div>
                     </div>
+
                     <button
                         onClick={() => navigate('/meuspedidos')}
                         className="mt-6 w-full flex items-center justify-center py-2 px-4 bg-amber-800 text-white rounded-lg hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-600"
@@ -67,6 +73,16 @@ const UserProfile = () => {
                         <FaListAlt className="mr-2 text-lg" />
                         Meus Pedidos
                     </button>
+
+                    {isAdmin && (
+                        <button
+                            onClick={() => navigate('/estoque')}
+                            className="mt-4 w-full flex items-center justify-center py-2 px-4 bg-white text-amber-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-amber-600"
+                        >
+                            <FaBox className="mr-2 text-lg" />
+                            Estoque
+                        </button>
+                    )}
                 </div>
             </div>
 

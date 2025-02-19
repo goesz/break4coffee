@@ -32,9 +32,9 @@ const Pedidos = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const userId = localStorage.getItem('token');
+        const token = localStorage.getItem('token');
 
-        if (!userId) {
+        if (!token) {
             navigate('/login');
             return;
         }
@@ -42,7 +42,6 @@ const Pedidos = () => {
         const fetchPedidos = async () => {
             try {
                 const response = await api.get('/pedidos', {
-                    params: { customer_id: userId },
                 });
         
                 const sortedPedidos = response.data.sort((a: Pedido, b: Pedido) => {

@@ -29,8 +29,12 @@ class InventoryController {
             const updatedProduct = await inventoryService.execute(productId, status);
 
             return reply.status(200).send(updatedProduct);
-        } catch (error) {
-            return reply.status(401).send({ msg: 'Token inválido ou expirado' });
+        }catch (error) {
+            if (error instanceof jwt.TokenExpiredError) {
+                return reply.status(401).send({ msg: 'Token expirado' });
+            } else {
+                return reply.status(401).send({ msg: 'Token inválido' });
+            }
         }
     }
 }
