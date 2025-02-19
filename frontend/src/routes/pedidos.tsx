@@ -32,7 +32,7 @@ const Pedidos = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const userId = sessionStorage.getItem('userId');
+        const userId = localStorage.getItem('token');
 
         if (!userId) {
             navigate('/login');

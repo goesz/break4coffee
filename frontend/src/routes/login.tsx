@@ -53,10 +53,7 @@ interface LoginResponse {
           throw new Error('Falha ao fazer login. Verifique suas credenciais.');
         }
   
-        sessionStorage.setItem('token', token);
-        sessionStorage.setItem('userId', user.id);
-        sessionStorage.setItem('userRole', user.role);
-        sessionStorage.setItem('userMoney', user.saldo);
+        localStorage.setItem('token', token);
         navigate('/')
 
 

@@ -1,5 +1,6 @@
 import prismaClient from "../prisma";
 import bcrypt from 'bcrypt';
+import  jwt  from "jsonwebtoken";
 
 interface CreateCustomerProps {
     name: string;
@@ -37,8 +38,15 @@ class CreateCustomerService {
     })
     console.log("Create user route has been called")
 
-        return customer
-    }
+    const token = jwt.sign({ id: customer.id }, process.env.JWT_PASS ?? '', { expiresIn: '2h' });
+
+    const { password: _, ...userWithoutPassword } = customer;
+
+    return {
+        ...userWithoutPassword,
+        token
+    };
 }
+};
 
 export { CreateCustomerService }

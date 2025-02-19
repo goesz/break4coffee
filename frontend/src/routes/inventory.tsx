@@ -20,10 +20,9 @@ const Estoque = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = sessionStorage.getItem('token');
-    const role = sessionStorage.getItem('userRole');
+    const token = localStorage.getItem('token');
 
-    if (!token || role !== 'admin') {
+    if (!token) {
       navigate('/login');
       return;
     }

@@ -17,7 +17,7 @@ interface CartItem {
 const Checkout = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const userId = sessionStorage.getItem('userId')
+  const token = localStorage.getItem('token')
   const { cartItems }: { cartItems: CartItem[] } = location.state || { cartItems: [] };
 
   const handleBack = () => {
@@ -25,18 +25,16 @@ const Checkout = () => {
   };
 
   const handleFinalize = async () => {
-    let userSaldo = parseFloat(sessionStorage.getItem('userMoney') || '0');
-    if (!userId) return navigate('/login');
-    if (userSaldo < total) {
-      console.log('Você está sem dinheiro');
-      return navigate('/produtos'); 
-    }
+    if (!token){
+      return navigate('/login');
+  }
+
+
   
     try {
       for (const item of cartItems) {
         for (let i = 0; i < item.quantidade; i++) {
           await api.post('/pedido', {
-            customer_id: userId,
             descricao: item.nome,
             valor: item.valor,
             loja: 'Break',
@@ -45,10 +43,8 @@ const Checkout = () => {
           console.log(`Pedido para o item ${item.nome} feito com sucesso.`);
         }
       }
+
   
-      userSaldo -= total;
-  
-      sessionStorage.setItem('userMoney', userSaldo.toString());
   
       console.log('Pedidos criados com sucesso');
       alert('Pedido realizado com sucesso');

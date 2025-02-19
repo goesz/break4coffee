@@ -17,12 +17,11 @@ export default function Navbar() {
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('userId');
+    localStorage.removeItem('token');
     navigate('/');
   };
 
-  const isLoggedIn = !!sessionStorage.getItem('token');
+  const isLoggedIn = !!localStorage.getItem('token');
 
   return (
 <nav className="mb-2 p-4">
