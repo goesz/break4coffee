@@ -6,6 +6,7 @@ interface UserProfile {
     name: string;
     email: string;
     saldo: number;
+    role: string;
 }
 
 class ShowUserController {
@@ -29,6 +30,10 @@ class ShowUserController {
             if (!user) {
                 return reply.status(404).send({ error: 'Usuário não encontrado' });
             }
+            if (user.role === 'admin') {
+                return reply.status(203).send({ msg: 'Administrador autenticado!' });
+            }
+
             return reply.status(200).send(user);
         } catch (error) {
             console.error(error);

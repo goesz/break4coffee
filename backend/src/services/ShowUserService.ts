@@ -4,6 +4,7 @@ interface UserProfile {
     name: string;
     email: string;
     saldo: number;
+    role: string;
 }
 class ShowUserService {
     async execute(userId: string): Promise<UserProfile | null> {
@@ -13,6 +14,7 @@ class ShowUserService {
                 name: true,
                 email: true,
                 saldo: true,
+                role: true,
             },
         });
 

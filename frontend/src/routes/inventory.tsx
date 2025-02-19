@@ -26,6 +26,22 @@ const Estoque = () => {
       navigate('/login');
       return;
     }
+  
+    const checkUserRole = async () => {
+      try {
+        const response = await api.get('/user/profile');
+        if (response.status === 203) {
+          loadProducts();
+        } else if (response.status === 200) {
+          navigate('/');
+        }
+      } catch (error) {
+        console.error("Erro ao verificar a função.", error);
+        navigate('/login');
+      }
+    };
+  
+    checkUserRole();
 
     const loadProducts = async () => {
       try {
