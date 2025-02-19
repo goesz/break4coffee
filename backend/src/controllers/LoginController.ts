@@ -7,7 +7,10 @@ class LoginController {
     try {
         const Login = new LoginService();
         const userLogin = await Login.execute({ email, password });
-        reply.status(201).send(userLogin);
+        reply.status(201).send({
+            id: userLogin.user.id,
+            token: userLogin.token
+        });
         return;
     } catch (error) {
         if (error instanceof Error) {

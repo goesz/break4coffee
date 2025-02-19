@@ -28,7 +28,7 @@ class LoginService {
         throw new Error("E-mail ou senha inválidos.")
     }
 
-    const token = jwt.sign({id: user.id }, process.env.JWT_PASS ?? '', { expiresIn: '8h'} )
+    const token = jwt.sign({id: user.id }, process.env.JWT_PASS ?? '', { expiresIn: '2h'} )
     console.log("Rota de logar chamada")
     
     const {password: _, ...userLogin} = user 

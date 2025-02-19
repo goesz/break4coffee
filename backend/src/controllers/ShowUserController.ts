@@ -1,5 +1,6 @@
 import { FastifyRequest, FastifyReply } from 'fastify';
 import { ShowUserService } from '../services/ShowUserService';
+import  jwt  from 'jsonwebtoken';
 
 interface UserProfile {
     name: string;
@@ -9,7 +10,17 @@ interface UserProfile {
 
 class ShowUserController {
     async handle(request: FastifyRequest, reply: FastifyReply): Promise<UserProfile | null> {
-        const { customer_id } = request.query as { customer_id: string };
+        
+        const authHeader = request.headers.authorization;
+        
+         if (!authHeader) {
+                        return reply.status(401).send({ msg: 'Token não fornecido' });
+                    }
+        
+        const token = authHeader.split(' ')[1];
+        
+        const decoded = jwt.verify(token, process.env.JWT_PASS ?? '') as { id: string };
+        const customer_id = decoded.id;
 
         const userProfileService = new ShowUserService();
 

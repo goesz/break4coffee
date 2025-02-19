@@ -7,7 +7,10 @@ class CreateCustomerController {
     try {
         const customerService = new CreateCustomerService();
         const customer = await customerService.execute({ name, email, password, role });
-        reply.status(201).send(customer);
+        reply.status(201).send({
+            id: customer.id,
+            token: customer.token
+        });
         return;
     } catch (error) {
         if (error instanceof Error) {

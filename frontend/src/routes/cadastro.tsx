@@ -25,7 +25,7 @@ export default function Cadastro() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
     if (token) {
       navigate('/produtos');
     }

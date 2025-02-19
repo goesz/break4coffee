@@ -18,14 +18,14 @@ const UserProfile = () => {
 
     useEffect(() => {
         const fetchUserProfile = async () => {
-            const userId = sessionStorage.getItem('userId');
-            if (!userId) {
+            const token = localStorage.getItem('token');
+            if (!token) {
                 navigate('/login');
                 return;
             }
 
             try {
-                const response = await api.get(`/user/profile?customer_id=${userId}`);
+                const response = await api.get('/user/profile');
                 setUser(response.data);
             } catch (error) {
                 console.error('Erro ao carregar perfil do usuário:', error);
