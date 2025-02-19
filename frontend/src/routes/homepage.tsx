@@ -14,6 +14,7 @@ interface ProductProps {
     descricao: string;
     created_at: string;
     updated_at: string;
+    status: string;
   }
   interface CartItem extends ProductProps {
     quantidade: number;
@@ -94,7 +95,10 @@ const Home = () => {
     </div>
       <h1 className="text-xl font-bold text-amber-950">Os mais pedidos:</h1>
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mr-2 ml-2 sm:mr-0 sm:ml-0 mt-6">
-    {products.slice(0, 4).map((product) => (
+    {products
+  .filter((product) => product.status === "enabled")
+  .slice(0, 4)
+  .map((product) => (
          <div
          key={product.id}
          className="py-8 bg-white shadow-lg mt-2 mr-2 ml-2 rounded-lg transform transition-colors duration-300 hover:bg-gray-100"

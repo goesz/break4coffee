@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaUser, FaEnvelope, FaWallet, FaListAlt, FaBox } from 'react-icons/fa';
 import Navbar from './navbar';
 import Footer from './footer';
+import axios, { AxiosError } from 'axios'; 
 
 interface UserProfileProps {
     id: string;
@@ -16,6 +17,7 @@ interface UserProfileProps {
 const UserProfile = () => {
     const [user, setUser] = useState<UserProfileProps | null>(null);
     const [isAdmin, setIsAdmin] = useState<boolean>(false);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -25,20 +27,26 @@ const UserProfile = () => {
                 navigate('/login');
                 return;
             }
-
+    
             try {
                 const response = await api.get('/user/profile');
                 setUser(response.data.user);
-                if (response.data.isAdmin) {
-                    setIsAdmin(true); // Marcar como admin
-                }
+                setIsAdmin(response.data.isAdmin);
             } catch (error) {
                 console.error('Erro ao carregar perfil do usuário:', error);
+            
+                if (axios.isAxiosError(error) && error.response?.status === 401) {
+                    localStorage.removeItem('token');
+                    navigate('/login');
+                }
+            } finally {
+                setLoading(false);
             }
         };
-
+    
         fetchUserProfile();
     }, [navigate]);
+    
 
     if (!user) {
         return <p>Carregando informações do usuário...</p>;
