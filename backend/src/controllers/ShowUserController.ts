@@ -14,35 +14,37 @@ class ShowUserController {
         
         const authHeader = request.headers.authorization;
         
-         if (!authHeader) {
-                        return reply.status(401).send({ msg: 'Token não fornecido' });
-                    }
+        if (!authHeader) {
+            return reply.status(401).send({ msg: 'Token não fornecido' });
+        }
         
         const token = authHeader.split(' ')[1];
-        
-        const decoded = jwt.verify(token, process.env.JWT_PASS ?? '') as { id: string };
-        const customer_id = decoded.id;
-
-        const userProfileService = new ShowUserService();
 
         try {
+            const decoded = jwt.verify(token, process.env.JWT_PASS ?? '') as { id: string };
+            const customer_id = decoded.id;
+
+            const userProfileService = new ShowUserService();
             const user = await userProfileService.execute(customer_id);
+
             if (!user) {
                 return reply.status(404).send({ error: 'Usuário não encontrado' });
             }
-            if (user.role === 'admin') {
-                return reply.status(200).send({ user,
-                    isAdmin: true });
-            }
 
-            return reply.status(200).send({ user,
-                isAdmin: false}
-            );
+            return reply.status(200).send({
+                user,
+                isAdmin: user.role === 'admin'
+            });
+
         } catch (error) {
-            console.error(error);
-            return reply.status(500).send({ error: 'Erro ao carregar perfil do usuário' });
+            if (error instanceof jwt.TokenExpiredError) {
+                return reply.status(401).send({ error: 'Token expirado' });
+            }
+            return reply.status(401).send({ error: 'Token inválido' });
         }
     }
 }
+
+
 
 export { ShowUserController };

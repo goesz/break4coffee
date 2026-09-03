@@ -1,6 +1,7 @@
 import prismaClient from "../prisma";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { env } from "../config/env";
 
 interface CustomerProps {
     email: string;
@@ -28,7 +29,7 @@ class LoginService {
         throw new Error("E-mail ou senha inválidos.")
     }
 
-    const token = jwt.sign({id: user.id }, process.env.JWT_PASS ?? '', { expiresIn: '2h'} )
+    const token = jwt.sign({id: user.id }, env.JWT_PASS, { expiresIn: '2h'} )
     console.log("Rota de logar chamada")
     
     const {password: _, ...userLogin} = user 

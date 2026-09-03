@@ -20,7 +20,7 @@ export default function Footer() {
             <Coffee className="mr-2" />
             Break4Coffee
           </h2>
-          <p className="mb-4">Para quando há pouco tempo para parar!</p>
+          <p className="mb-4">Para quando não há tempo para parar!</p>
           <div className="flex space-x-4">
             <div className="hover:text-amber-300  cursor-pointer transition-colors">
               <Facebook size={20} />
